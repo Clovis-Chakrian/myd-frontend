@@ -1,18 +1,18 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
 import './index.css'
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { CatalogoClinicas } from './pages/CatalogoClinicas/CatalogoClinicas.jsx';
+import { CatalogoClinicas } from './pages/CatalogoClinicas/CatalogoClinicas/CatalogoClinicas.jsx';
+import InitialPage from './pages/InitialPage/InitialPage.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <InitialPage />,
     // errorElement: <ErrorPage />,
     children: [
-      { path: '/catalogo-clinicas', element: <CatalogoClinicas /> }
+      { path: '/catalogo-clinicas', element: <CatalogoClinicas /> },
     ],
   },
 ]);
