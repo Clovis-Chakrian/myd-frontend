@@ -1,6 +1,6 @@
 import { Card, Space } from "antd";
-import ButtonPrimary from "../../../components/Button/Button";
-import { AppLayout } from "../../../components/AppLayout/AppLayout";
+import ButtonPrimary from "../../components/Button/Button";
+import { AppLayout } from "../../components/AppLayout/AppLayout";
 
 export const CatalogoClinicas = () => {
   return (
