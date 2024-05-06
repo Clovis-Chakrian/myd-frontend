@@ -1,8 +1,9 @@
 import React from "react";
-import ButtonPrimary from "../../components/Button/Button";
+import Button from "../../components/Button/Button";
 import logo from "../../../public/icons/logo.png";
 import styles from "./InitialPage.module.css";
 import { Row, Col } from "antd";
+import { Link } from "react-router-dom";
 
 const InitialPage = () => {
   return (
@@ -24,10 +25,14 @@ const InitialPage = () => {
             marginBottom: "15px",
           }}
         >
-          <ButtonPrimary name={"Entrar"} />
+          <Link to="/home">
+            <Button name={"Entrar"} className={styles.button}></Button>
+          </Link>
         </Row>
         <Row>
-          <ButtonPrimary name={"Cadastrar"} />
+          <Link to="/home">
+            <Button name={"Cadastrar"} className={styles.button}></Button>
+          </Link>
         </Row>
       </div>
     </React.Fragment>

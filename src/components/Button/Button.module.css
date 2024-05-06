@@ -1,8 +1,14 @@
-.buttonNormal {
-  width: 240px;
-  height: 45px;
-  color: #ffffff;
+.actionButton {
+  width: 100%;
+  border-radius: 6px;
+  height: 48px;
+  border-color: none;
+  color: #fff;
   background-color: #f2b66d;
-  font-size: 14px;
   font-weight: bold;
+}
+
+.actionButton:hover {
+  background-color: #fdd6a7 !important;
+  color: "#fff" !important;
 }
