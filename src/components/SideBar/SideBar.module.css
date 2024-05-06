@@ -1,0 +1,37 @@
+.menu {
+  background-color: black;
+  align-items: center;
+  text-align: center;
+  font-weight: bold;
+  font-size: 15px;
+}
+.sideBar {
+  background-color: black;
+  align-items: center;
+  text-align: center;
+  font-size: 15px;
+}
+
+.sideBar:hover{
+    background-color: #404040;
+}
+
+.logo {
+  width: 60%;
+  align-items: center;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.icon {
+  width: 30px;
+  font-weight: bold;
+}
+
+.menuItem {
+  background-color: #000000;
+}
+
+.menuItem:hover {
+  background-color: #404040;
+}
