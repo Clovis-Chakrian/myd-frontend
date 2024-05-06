@@ -1,14 +1,14 @@
-import { HomeOutlined } from "@ant-design/icons";
 import { Layout, Menu } from "antd";
-import { Link } from "react-router-dom"; // Importar Link do React Router
+import { Link } from "react-router-dom";
 import React from "react";
-const { Sider } = Layout;
 import styles from "./SideBar.module.css";
 import logo from "../../../public/icons/logo.png";
 import iconChat from "../../../public/icons/chat.svg";
 import iconTree from "../../../public/icons/tree.svg";
 import iconHospital from "../../../public/icons/hospital.svg";
 import iconHome from "../../../public/icons/home.svg";
+
+const { Sider } = Layout;
 
 export const SiderBar = () => (
   <Sider
@@ -61,7 +61,6 @@ export const SiderBar = () => (
           icon={item.icon}
           className={styles.menuItem}
           style={{ color: "white" }}
-          activeStyle={{ background: "#404040", color: "#404040" }} // Altera o fundo para cinza quando em foco
         >
           <Link to={item.link} className={styles.link}>
             {item.label}

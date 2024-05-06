@@ -5,15 +5,12 @@
   font-weight: bold;
   font-size: 15px;
 }
+
 .sideBar {
-  background-color: black;
+  background-color: black !important;
   align-items: center;
   text-align: center;
   font-size: 15px;
-}
-
-.sideBar:hover{
-    background-color: #404040;
 }
 
 .logo {
@@ -28,10 +25,7 @@
   font-weight: bold;
 }
 
-.menuItem {
-  background-color: #000000;
-}
-
-.menuItem:hover {
-  background-color: #404040;
+.menuItem:hover,
+.menuItem::before {
+  background-color: #404040 !important;
 }

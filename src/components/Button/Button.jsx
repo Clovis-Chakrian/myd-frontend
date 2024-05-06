@@ -1,13 +1,18 @@
-import { Button } from "antd";
-import style from "./Button.module.css";
+import React from "react";
+import { Button as AntdButton } from "antd";
+import clsx from "clsx";
+import styles from "./Button.module.css";
 
-// eslint-disable-next-line react/prop-types
-const ButtonPrimary = ({ name, onClick }) => {
+const Button = ({ className, name, onClick }) => {
   return (
-    <Button onClick={onClick} className={style.buttonNormal} type="primary">
+    <AntdButton
+      type="primary"
+      onClick={onClick}
+      className={clsx(styles.actionButton, className)}
+    >
       {name}
-    </Button>
+    </AntdButton>
   );
 };
 
-export default ButtonPrimary;
+export default Button;
