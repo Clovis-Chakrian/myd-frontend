@@ -23,6 +23,7 @@
 .icon {
   width: 30px;
   font-weight: bold;
+  color: #f2b66d !important;
 }
 
 .menuItem:hover,

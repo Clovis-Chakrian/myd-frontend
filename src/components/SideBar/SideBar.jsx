@@ -7,12 +7,12 @@ import iconChat from "../../../public/icons/chat.svg";
 import iconTree from "../../../public/icons/tree.svg";
 import iconHospital from "../../../public/icons/hospital.svg";
 import iconHome from "../../../public/icons/home.svg";
+import iconAbout from "../../../public/icons/aboutwe.svg";
 
 const { Sider } = Layout;
 
 export const SiderBar = () => (
   <Sider
-    trigger={null}
     className={styles.sideBar}
     breakpoint="lg"
     style={{
@@ -54,6 +54,13 @@ export const SiderBar = () => (
           ),
           label: "Clínicas",
           link: "/catalogo-clinicas",
+        },
+        {
+          icon: (
+            <img src={iconAbout} alt="About" className={styles.icon} style={{color: "#f2b66d"}}/>
+          ),
+          label: "Sobre Nós",
+          link: "/sobre-nos",
         },
       ].map((item, index) => (
         <Menu.Item
