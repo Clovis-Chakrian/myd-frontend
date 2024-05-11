@@ -30,7 +30,7 @@ const InitialPage = () => {
           </Link>
         </Row>
         <Row>
-          <Link to="/home">
+          <Link to="/cadastro">
             <Button name={"Cadastrar"} className={styles.button}></Button>
           </Link>
         </Row>

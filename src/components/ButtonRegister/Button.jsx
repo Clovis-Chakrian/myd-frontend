@@ -3,10 +3,18 @@ import { Button as AntdButton } from "antd";
 import clsx from "clsx";
 import styles from "./Button.module.css";
 
-const Button = ({ className, name, onClick, disabledClassName }) => {
+const ButtonRegister = ({
+  className,
+  name,
+  onClick,
+  disabledClassName,
+  icon,
+}) => {
   return (
     <AntdButton
+      shape="circle"
       type="primary"
+      icon={icon}
       onClick={onClick}
       className={clsx(styles.actionButton, className)}
       disabled={disabledClassName}
@@ -16,4 +24,4 @@ const Button = ({ className, name, onClick, disabledClassName }) => {
   );
 };
 
-export default Button;
+export default ButtonRegister;

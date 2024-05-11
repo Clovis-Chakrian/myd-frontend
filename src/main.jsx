@@ -7,6 +7,7 @@ import { CatalogoClinicas } from "./pages/CatalogoClinicas/CatalogoClinicas.jsx"
 import InitialPage from "./pages/InitialPage/InitialPage.jsx";
 import { Home } from "./pages/Home/Home.jsx";
 import { SobreNos } from "./pages/SobreNos/SobreNos.jsx";
+import { Cadastro } from "./pages/Cadastro/Cadastro.jsx";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
   {
     path: "/sobre-nos",
     element: <SobreNos />,
+  },
+  {
+    path: "/cadastro",
+    element: <Cadastro />,
   },
 ]);
 
