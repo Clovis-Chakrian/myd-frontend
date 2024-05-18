@@ -1,4 +1,4 @@
-import React from "react";
+/* eslint-disable react/prop-types */
 import { Button as AntdButton } from "antd";
 import clsx from "clsx";
 import styles from "./Button.module.css";
