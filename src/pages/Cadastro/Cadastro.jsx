@@ -158,7 +158,7 @@ export const Cadastro = () => {
               />
             </div>
 
-            <Link to="/Trilhas">
+            <Link to="/trilhas">
               <Button
                 name={"Cadastrar"}
                 className={styles.button}
