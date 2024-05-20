@@ -56,7 +56,7 @@ export const Cadastro = () => {
             layout="vertical"
           >
             <Form.Item
-              label="Username"
+              label="Nome de usuário"
               name={["user", "username"]}
               rules={[
                 { required: true, message: "Por favor, digite seu nome de usuário" },
