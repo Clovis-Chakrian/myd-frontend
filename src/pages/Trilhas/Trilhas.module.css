@@ -17,12 +17,16 @@ h1, h2, h3{
     justify-content: baseline;
     margin-bottom: 30px;
 }
+.caixaSubTit{
+    width: 90%;
+}
 .subtitulo{
     margin-left: 7%;
-    font-size: 2.5vw;
+    font-size: 2.8vw;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .logo{
+    min-width: 40px;
     width:7%;
     margin: 20px;
     text-align: start;
@@ -34,29 +38,9 @@ h1, h2, h3{
     display: grid;
     grid-template-columns:50% 50%;
     row-gap: 20px;
-    
 }
 
-.card{
-    width: 85%;
-    max-width: 450px;
-    box-shadow: 3px 4px 2px gray;
-    max-height: 200px;
-}
 
-.divCard{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
-
-.h3Card{
-    font-size: 2.3vw;
-    color: rgb(63, 63, 63);
-}
-
-.imgCard{
+.titulo{
     width: 80%;
-    max-height: 120px;
-    margin-left: 15px;
 }
