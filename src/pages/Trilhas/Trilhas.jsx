@@ -16,7 +16,7 @@ import { CardTrilhas } from "../../components/CardTrilhas/CardTrilhas";
 export const Trilhas = () => {
   const trilhas = [
     { titulo: "Relaxamento", imageUrl: {relaxamento} },
-    { titulo: "Interação Socia", imageUrl: {trabalhoComunitario}},
+    { titulo: "Interação Social", imageUrl: {trabalhoComunitario}},
     { titulo: "Rotina Saúdavel", imageUrl: {conexaoNatureza}},
     { titulo: "Praticar Gratidão", imageUrl: {praticarGratidao} },
     { titulo: "Conexão com a Natureza", imageUrl: {rotinaSaudavel} },
