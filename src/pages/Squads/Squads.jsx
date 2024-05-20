@@ -1,19 +1,18 @@
 /* eslint-disable react/prop-types */
-import { AppLayout } from "../../components/AppLayout/AppLayout";
+import { AppLayout } from "../../components/AppLayout/AppLayout.jsx";
 import { Card, Row, Col, Checkbox } from "antd";
 import Button from "../../components/Button/Button.jsx";
-import style from "./DetalheSquad.module.css";
+import style from "./Squads.module.css";
 import trilhaRelaxamento from "../../../public/icons/trilhaRelaxamento.svg";
 import userImg from "../../../public/icons/userImg.svg";
-import badge1 from "./badges/badge1.svg";
-import badge2 from "./badges/badge2.svg";
+import badge1 from "../../../public/icons/badges/badge1.svg";
+import badge2 from "../../../public/icons/badges/badge2.svg";
 
 const badges = [
   { image: badge1, description: "100 desafios concluídos" },
   { image: badge2, description: "Participação em 4 eventos" }
 ];
 
-// Componente para representar um membro do squad com foto
 const SquadMemberCard = ({ name, image }) => (
   <Card className={style.squadMemberCard}>
     <img src={image} alt={name} className={style.memberImage} />
@@ -21,8 +20,8 @@ const SquadMemberCard = ({ name, image }) => (
   </Card>
 );
 
-export const Squads = () => {
-  // Exemplo de dados de membros do squad
+export const Squads  = () => {
+
   const squadMembers = [
     { name: "Ana", image: userImg },
     { name: "Cláudio", image: userImg },

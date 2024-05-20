@@ -8,7 +8,7 @@ import InitialPage from "./pages/InitialPage/InitialPage.jsx";
 import { Home } from "./pages/Home/Home.jsx";
 import { SobreNos } from "./pages/SobreNos/SobreNos.jsx";
 import { Cadastro } from "./pages/Cadastro/Cadastro.jsx";
-import { Squads } from "./pages/DetalheSquad/DetalheSquad.jsx"
+import { Squads } from "./pages/Squads/Squads.jsx"
 
 const router = createBrowserRouter([
   {

@@ -55,22 +55,18 @@
     width: 100%;
   }
 
-  
-/* DetalheSquad.module.css */
-
-/* Estilos para o card dos badges */
-.badgeContainer {
+  .badgeContainer {
     text-align: center;
   }
   
   .badgeImage {
-    width: 60%; /* Largura da imagem do badge em relação ao contêiner pai */
-    height: auto; /* Altura automática para manter a proporção */
-    max-width: 120px; /* Largura máxima da imagem do badge */
-    margin-bottom: 10px; /* Espaçamento inferior entre os badges */
+    width: 60%;
+    height: auto; 
+    max-width: 120px;
+    margin-bottom: 10px;
   }
   
   .badgeDescription {
-    font-size: 14px; /* Tamanho da fonte da descrição do badge */
+    font-size: 14px; 
   }
   
