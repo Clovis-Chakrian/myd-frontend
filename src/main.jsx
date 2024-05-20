@@ -8,7 +8,7 @@ import InitialPage from "./pages/InitialPage/InitialPage.jsx";
 import { Home } from "./pages/Home/Home.jsx";
 import { SobreNos } from "./pages/SobreNos/SobreNos.jsx";
 import { Cadastro } from "./pages/Cadastro/Cadastro.jsx";
-import { SelectBall } from "./pages/SelectBall/SelectBall.jsx";
+import { Squads } from "./pages/Squads/Squads.jsx"
 
 const router = createBrowserRouter([
   {
@@ -33,8 +33,8 @@ const router = createBrowserRouter([
     element: <Cadastro />,
   },
   {
-    path: "/ball",
-    element: <SelectBall />,
+    path: "/squads",
+    element: <Squads />
   },
 ]);
 

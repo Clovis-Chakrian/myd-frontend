@@ -2,7 +2,7 @@
 import { AppLayout } from "../../components/AppLayout/AppLayout.jsx";
 import { Card, Row, Col, Checkbox } from "antd";
 import Button from "../../components/Button/Button.jsx";
-import style from "./Squads.module.css";
+import style from "./DetalheSquad.module.css";
 import trilhaRelaxamento from "../../../public/icons/trilhaRelaxamento.svg";
 import userImg from "../../../public/icons/userImg.svg";
 import badge1 from "../../../public/icons/badges/badge1.svg";
@@ -20,7 +20,7 @@ const SquadMemberCard = ({ name, image }) => (
   </Card>
 );
 
-export const Squads  = () => {
+export const DetalheSquad  = () => {
 
   const squadMembers = [
     { name: "Ana", image: userImg },
@@ -45,7 +45,7 @@ export const Squads  = () => {
               <Checkbox /> Fique 45min sem redes sociais
             </p>
             <Button name={"Veja tudo"} className={style.Button} />
-          </Card>
+          </Card> 
         </Col>
 
 

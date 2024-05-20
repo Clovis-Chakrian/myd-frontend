@@ -1,21 +1,22 @@
 /* eslint-disable react/prop-types */
-import Button from '../Button/Button';
-import Checkbox from 'antd/es/checkbox/Checkbox';
-import style from './Card.module.css';
+import { Card } from 'antd';
+import styles from './Card.module.css';
 
-const Card = ({ title, imageSrc, tasks, buttonText }) => {
-  return (
-    <div className={style.card}>
-      <h3>{title}</h3>
-      <img src={imageSrc} alt={title} className={style.imgTrilha} />
-      {tasks.map((task, index) => (
-        <p key={index}>
-          <Checkbox /> {task}
-        </p>
-      ))}
-      <Button name={buttonText} className={style.button} />
-    </div>
-  );
-}
+export const CardImg = ({cardTitle,CardImg,Content}) => (
+  <Card className={styles.Card}
+    title={cardTitle}
+    bordered={false}
+    style={{
+      width: 300,
+    }}
+    cover={<img style={{
+        width:'90%',
+        padding:'20px',
 
-export default Card;
+
+    }} alt="example" src={CardImg} />}
+  >
+    {Content}
+
+  </Card>
+);
