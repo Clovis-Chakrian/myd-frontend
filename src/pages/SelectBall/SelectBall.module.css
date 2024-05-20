@@ -1,0 +1,43 @@
+.selectBall {
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.buttonDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 30px;
+  width: 100%;
+}
+
+.button {
+  width: 200px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.ballContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 976px) {
+  .ballContainer {
+    grid-template-columns: repeat(3, minmax(15px, 1fr));
+    margin: 10px;
+  }
+}
