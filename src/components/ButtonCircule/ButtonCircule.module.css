@@ -1,0 +1,25 @@
+.actionButton {
+  border-color: none;
+  color: #000000;
+  background-color: #d9d9d9;
+  font-weight: bold;
+  width: 150px;
+  height: 150px;
+}
+
+.actionButton:hover {
+  background-color: #f2b66d !important;
+  color: #fff !important;
+}
+
+.actionButton.selected {
+  background-color: #f2b66d !important;
+  color: #fff !important;
+}
+
+@media screen and (max-width: 976px) {
+  .actionButton {
+    width: 100px;
+    height: 100px;
+  }
+}

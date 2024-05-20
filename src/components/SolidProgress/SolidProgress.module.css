@@ -1,0 +1,32 @@
+.container {
+  position: relative;
+  width: 250px;
+  height: 64px;
+  border: none !important;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #000000;
+}
+
+.text {
+  margin-bottom: auto;
+  margin-top: 5px;
+  padding: 10px;
+  font-size: 16px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+}
+
+.progressBar {
+  position: absolute;
+  padding-right: 30px;
+  padding-left: 30px;
+  bottom: 0;
+  width: 100%;
+  color: aliceblue;
+}
