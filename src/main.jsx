@@ -9,6 +9,7 @@ import { Home } from "./pages/Home/Home.jsx";
 import { SobreNos } from "./pages/SobreNos/SobreNos.jsx";
 import { Cadastro } from "./pages/Cadastro/Cadastro.jsx";
 import { Squads } from "./pages/Squads/Squads.jsx"
+import { Trilhas } from "./pages/Trilhas/Trilhas.jsx";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
   {
     path: "/squads",
     element: <Squads />
+  },
+  {
+    path: "/trilhas",
+    element: <Trilhas/>,
   },
 ]);
 
