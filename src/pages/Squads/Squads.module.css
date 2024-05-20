@@ -1,0 +1,72 @@
+.LayoutStyle {
+    border-radius: 0;
+    width: 100%;
+    height: 100vh;
+  }
+  
+  .HeaderStyle {
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    height: 10%;
+    padding-inline: 48px;
+    line-height: 64px;
+    background-color: #F8F8F9;
+    color: black;
+    width: 100%;
+  }
+  
+  .HeaderStyle h1 {
+    width: 20%;
+  }
+  
+  .SiderStyle {
+    text-align: center;
+    height: 100%;
+    line-height: 120px;
+    color: #fff;
+    overflow: hidden;
+    width: 20%;
+  }
+  
+  .Cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .SpecialCard {
+    display: flex;
+    width: 50%;
+  }
+  
+  .ContentStyle section {
+    margin-left: 20px;
+  }
+  
+  .imgTrilha {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .carrosel {
+    width: 100%;
+  }
+
+  .badgeContainer {
+    text-align: center;
+  }
+  
+  .badgeImage {
+    width: 60%;
+    height: auto; 
+    max-width: 120px;
+    margin-bottom: 10px;
+  }
+  
+  .badgeDescription {
+    font-size: 14px; 
+  }
+  
