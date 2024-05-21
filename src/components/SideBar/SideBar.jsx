@@ -8,6 +8,7 @@ import iconTree from "../../../public/icons/tree.svg";
 import iconHospital from "../../../public/icons/hospital.svg";
 import iconHome from "../../../public/icons/home.svg";
 import iconAbout from "../../../public/icons/aboutwe.svg";
+import iconConfig from "../../../public/icons/settings.svg";
 
 const { Sider } = Layout;
 
@@ -57,10 +58,27 @@ export const SiderBar = () => (
         },
         {
           icon: (
-            <img src={iconAbout} alt="About" className={styles.icon} style={{color: "#f2b66d"}}/>
+            <img
+              src={iconAbout}
+              alt="About"
+              className={styles.icon}
+              style={{ color: "#f2b66d" }}
+            />
           ),
           label: "Sobre Nós",
           link: "/sobre-nos",
+        },
+        {
+          icon: (
+            <img
+              src={iconConfig}
+              alt="config"
+              className={styles.icon}
+              style={{ color: "#f2b66d" }}
+            />
+          ),
+          label: "Configurações",
+          link: "/config",
         },
       ].map((item, index) => (
         <Menu.Item
