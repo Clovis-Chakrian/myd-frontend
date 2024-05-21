@@ -12,6 +12,7 @@ import { Squads } from "./pages/Squads/Squads.jsx"
 import { Trilhas } from "./pages/Trilhas/Trilhas.jsx";
 import { SelectBall } from "./pages/SelectBall/SelectBall.jsx";
 import { Config } from "./pages/Config/Config.jsx";
+import {ListagemSquad} from "./pages/ListagemSquad/ListagemSquad.jsx"
 
 const router = createBrowserRouter([
   {
@@ -51,6 +52,11 @@ const router = createBrowserRouter([
     path: "/config",
     element: <Config />,
   },
+  {
+    path: "/listagem-squad",
+    element: <ListagemSquad />,
+  },
+
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
