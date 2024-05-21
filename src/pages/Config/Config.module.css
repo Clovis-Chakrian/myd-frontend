@@ -1,11 +1,30 @@
 .configContainer {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+}
+
+.avatar {
+  width: 100px !important;
+  height: 100px !important;
+}
+
+.avatarDiv {
+  margin-bottom: 20px;
+}
+
+.card {
+  width: 100%;
+  z-index: 1 !important;
+  position: relative !important;
+}
+
+@media screen and (max-width: 576px) {
+  .card {
+    margin-bottom: 20px !important;
   }
-  
-  .avatarDiv {
-    margin: 20px;
-  }
-  
+}
