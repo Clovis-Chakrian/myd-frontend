@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import img from "../../../public/icons/imgCadastro.png";
 import logo from "../../../public/icons/logo.png";
 import styles from "./Cadastro.module.css";
-import { Form, Input } from "antd";
+import { Form, Input, DatePicker, Select } from "antd";
 import Button from "../../components/Button/Button";
 import { Link } from "react-router-dom";
 import {
@@ -56,10 +56,10 @@ export const Cadastro = () => {
             layout="vertical"
           >
             <Form.Item
-              label="Username"
+              label="Nome de usuário"
               name={["user", "username"]}
               rules={[
-                { required: true, message: "Please input your username!" },
+                { required: true, message: "Por favor, digite seu nome de usuário" },
               ]}
             >
               <Input name="username" onChange={handleInputChange} />
@@ -68,20 +68,80 @@ export const Cadastro = () => {
             <Form.Item
               name={["user", "email"]}
               label="Email"
-              rules={[{ required: true, type: "email" }]}
+              rules={[
+                {required: true, message: 'Digite seu email'},
+                {type: 'email', message: 'Email inválido'}
+              ]}
             >
               <Input name="email" onChange={handleInputChange} />
             </Form.Item>
 
             <Form.Item
-              name={["user", "password"]}
-              label="Password"
+              label="Data de Nascimento"
+              name={["user", "dataNascimento"]}
               rules={[
-                { required: true, message: "Please input your password!" },
+                { required: true, message: "Por favor, coloque sua data de nascimento!" },
               ]}
             >
-              <Input.Password name="password" onChange={handleInputChange} />
+              <DatePicker name="dataNascimento" onChange={handleInputChange} />
             </Form.Item>
+
+            <Form.Item
+              label="País"
+              name={["user", "pais"]}
+              rules={[
+                { required: true, message: "Por favor, informe seu país" },
+              ]}
+            >
+              <Select name="pais" onChange={handleInputChange}>
+                <Select.Option value="Brasil">Brasil</Select.Option>
+              </Select>
+            </Form.Item>
+
+            <Form.Item
+              label="Estado"
+              name={["user", "estado"]}
+              rules={[
+                { required: true, message: "Por favor, seu informe seu Estado" },
+              ]}
+            >
+              <Select name="estado" onChange={handleInputChange}>
+                <Select.Option value="PE">Pernambuco</Select.Option>
+              </Select>
+            </Form.Item>
+
+            <Form.Item
+              label="Cidade"
+              name={["user", "cidade"]}
+              rules={[
+                { required: true, message: "Por favor, seu informe seu Estado" },
+              ]}
+            >
+              <Select name="cidade" onChange={handleInputChange}>
+                <Select.Option value="Recife">Recife</Select.Option>
+              </Select>
+            </Form.Item>
+
+            <Form.Item
+              label="Senha"
+              name={["user", "senha"]}
+              rules={[
+                { required: true, message: "Por favor, digite sua senha!" },
+              ]}
+            >
+              <Input.Password name="senha" onChange={handleInputChange} />
+            </Form.Item>
+
+            <Form.Item
+              label="Confirme sua senha"
+              name={["user", "senhaConfirma"]}
+              rules={[
+                { required: true, message: "Por favor, confime sua senha!" },
+              ]}
+            >
+              <Input.Password name="senhaConfirma" onChange={handleInputChange} />
+            </Form.Item>
+            
 
             <div className={styles.buttonsRegister}>
               <ButtonRegister
@@ -98,7 +158,7 @@ export const Cadastro = () => {
               />
             </div>
 
-            <Link to="/home">
+            <Link to="/trilhas">
               <Button
                 name={"Cadastrar"}
                 className={styles.button}
