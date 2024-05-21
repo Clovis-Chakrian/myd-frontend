@@ -11,6 +11,7 @@ import { Cadastro } from "./pages/Cadastro/Cadastro.jsx";
 import { Squads } from "./pages/Squads/Squads.jsx"
 import { Trilhas } from "./pages/Trilhas/Trilhas.jsx";
 import { SelectBall } from "./pages/SelectBall/SelectBall.jsx";
+import { Config } from "./pages/Config/Config.jsx";
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
   {
     path: "/ball",
     element: <SelectBall />,
+  },
+  {
+    path: "/config",
+    element: <Config />,
   },
 ]);
 
