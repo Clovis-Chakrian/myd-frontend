@@ -4,6 +4,7 @@ import { SolidProgress } from "../../components/SolidProgress/SolidProgress";
 import styles from "./SelectBall.module.css";
 import { Ball } from "./Ball";
 import Button from "../../components/Button/Button";
+import { Link } from "react-router-dom";
 
 export const SelectBall = () => {
   const [progress, setProgress] = useState(0);
@@ -26,11 +27,13 @@ export const SelectBall = () => {
       </div>
       <Ball setProgress={setProgress} />
       <div className={styles.buttonDiv}>
-        <Button
-          name={"Seguir"}
-          className={styles.button}
-          disabledClassName={progress === 0}
-        />
+        <Link to="/trilhas">
+          <Button
+            name={"Seguir"}
+            className={styles.button}
+            disabledClassName={progress === 0}
+          />
+        </Link>
       </div>
     </React.Fragment>
   );

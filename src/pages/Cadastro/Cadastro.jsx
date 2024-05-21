@@ -69,8 +69,8 @@ export const Cadastro = () => {
               name={["user", "email"]}
               label="Email"
               rules={[
-                {required: true, message: 'Digite seu email'},
-                {type: 'email', message: 'Email inválido'}
+                { required: true, message: 'Digite seu email' },
+                { type: 'email', message: 'Email inválido' }
               ]}
             >
               <Input name="email" onChange={handleInputChange} />
@@ -141,7 +141,7 @@ export const Cadastro = () => {
             >
               <Input.Password name="senhaConfirma" onChange={handleInputChange} />
             </Form.Item>
-            
+
 
             <div className={styles.buttonsRegister}>
               <ButtonRegister
@@ -157,8 +157,7 @@ export const Cadastro = () => {
                 className={styles.buttonRegister}
               />
             </div>
-
-            <Link to="/trilhas">
+            <Link to="/ball">
               <Button
                 name={"Cadastrar"}
                 className={styles.button}

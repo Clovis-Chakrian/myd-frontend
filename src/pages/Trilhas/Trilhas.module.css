@@ -1,13 +1,17 @@
-*{
+* {
     text-decoration: none;
 }
-h1, h2, h3{
+
+h1,
+h2,
+h3 {
     color: #333333;
 }
-.wrapper{
+
+.wrapper {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
 }
 
 .container {
@@ -15,27 +19,30 @@ h1, h2, h3{
     display: flex;
     align-items: center;
     justify-content: baseline;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
 }
-.caixaSubTit{
+
+.caixaSubTit {
     width: 90%;
 }
-.subtitulo{
+
+.subtitulo {
     margin-left: 7%;
     font-size: 2.8vw;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-.logo{
+
+.logo {
     min-width: 40px;
-    width:7%;
+    width: 7%;
     margin: 20px;
     text-align: start;
 }
 
-.conjuntoTrilhas{
+.conjuntoTrilhas {
     width: 100%;
     justify-items: center;
     display: grid;
-    grid-template-columns:50% 50%;
+    grid-template-columns: 50% 50%;
     row-gap: 20px;
 }

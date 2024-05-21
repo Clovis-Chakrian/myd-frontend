@@ -10,6 +10,7 @@ import { SobreNos } from "./pages/SobreNos/SobreNos.jsx";
 import { Cadastro } from "./pages/Cadastro/Cadastro.jsx";
 import { Squads } from "./pages/Squads/Squads.jsx"
 import { Trilhas } from "./pages/Trilhas/Trilhas.jsx";
+import { SelectBall } from "./pages/SelectBall/SelectBall.jsx";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
   {
     path: "/trilhas",
     element: <Trilhas/>,
+  },
+  {
+    path: "/ball",
+    element: <SelectBall />,
   },
 ]);
 

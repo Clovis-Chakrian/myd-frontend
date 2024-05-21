@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import logo from "../../../public/icons/logo.png";
 import styles from "./Trilhas.module.css";
+import { SolidProgress } from "../../components/SolidProgress/SolidProgress";
 import InteracaoSocial from "../../../public/TrilhasImg/trilhaInteracaoSocial.png";
 import rotinaSaudavel from "../../../public/TrilhasImg/trilhaRotinaSaudavel.png";
 import praticarGratidao from "../../../public/TrilhasImg//trilhaPraticarGratidao.png";
@@ -14,13 +15,14 @@ import { CardTrilhas } from "../../components/CardTrilhas/CardTrilhas";
 
 
 export const Trilhas = () => {
+
   const trilhas = [
-    { titulo: "Relaxamento", imageUrl: {relaxamento} },
-    { titulo: "Interação Social", imageUrl: {trabalhoComunitario}},
-    { titulo: "Rotina Saúdavel", imageUrl: {conexaoNatureza}},
-    { titulo: "Praticar Gratidão", imageUrl: {praticarGratidao} },
-    { titulo: "Conexão com a Natureza", imageUrl: {rotinaSaudavel} },
-    { titulo: "Trabalho Comunitário", imageUrl: {InteracaoSocial} }
+    { titulo: "Relaxamento", imageUrl: relaxamento },
+    { titulo: "Interação Social", imageUrl: trabalhoComunitario },
+    { titulo: "Rotina Saúdavel", imageUrl: conexaoNatureza },
+    { titulo: "Praticar Gratidão", imageUrl: praticarGratidao },
+    { titulo: "Conexão com a Natureza", imageUrl: rotinaSaudavel },
+    { titulo: "Trabalho Comunitário", imageUrl: InteracaoSocial }
   ];
 
   return (
@@ -31,8 +33,10 @@ export const Trilhas = () => {
           <h2 className={styles.subtitulo}>Para começarmos, escolha uma trilha abaixo : </h2>
         </div>
       </div>
+      <SolidProgress name="2/2" progress={100} />
+      <br></br>
       <div className={styles.conjuntoTrilhas}>
-      {trilhas.map((trilha, index) => ( <CardTrilhas index={index} text={trilha.titulo} imageUrl={trilha.imageUrl}></CardTrilhas>))}
+        {trilhas.map((trilha, index) => (<CardTrilhas index={index} text={trilha.titulo} imageUrl={trilha.imageUrl}></CardTrilhas>))}
       </div>
     </div>
   );
