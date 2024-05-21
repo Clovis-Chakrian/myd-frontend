@@ -8,11 +8,12 @@ import InitialPage from "./pages/InitialPage/InitialPage.jsx";
 import { Home } from "./pages/Home/Home.jsx";
 import { SobreNos } from "./pages/SobreNos/SobreNos.jsx";
 import { Cadastro } from "./pages/Cadastro/Cadastro.jsx";
-import { Squads } from "./pages/Squads/Squads.jsx"
+import { Squads } from "./pages/Squads/Squads.jsx";
 import { Trilhas } from "./pages/Trilhas/Trilhas.jsx";
 import { SelectBall } from "./pages/SelectBall/SelectBall.jsx";
 import { Config } from "./pages/Config/Config.jsx";
-import {ListagemSquad} from "./pages/ListagemSquad/ListagemSquad.jsx"
+import { ListagemSquad } from "./pages/ListagemSquad/ListagemSquad.jsx";
+import { Chat } from "./pages/Chat/Chat.jsx";
 
 const router = createBrowserRouter([
   {
@@ -38,11 +39,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/squads",
-    element: <Squads />
+    element: <Squads />,
   },
   {
     path: "/trilhas",
-    element: <Trilhas/>,
+    element: <Trilhas />,
   },
   {
     path: "/ball",
@@ -56,7 +57,10 @@ const router = createBrowserRouter([
     path: "/listagem-squad",
     element: <ListagemSquad />,
   },
-
+  {
+    path: "/chat",
+    element: <Chat />,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

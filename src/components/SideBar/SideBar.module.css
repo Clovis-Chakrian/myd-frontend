@@ -4,6 +4,7 @@
   text-align: center;
   font-weight: bold;
   font-size: 15px;
+  z-index: 1000 !important;
 }
 
 .sideBar {
@@ -11,6 +12,7 @@
   align-items: center;
   text-align: center;
   font-size: 15px;
+  z-index: 1000 !important;
 }
 
 .logo {
