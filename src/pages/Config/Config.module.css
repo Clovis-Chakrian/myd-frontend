@@ -1,0 +1,11 @@
+.configContainer {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .avatarDiv {
+    margin: 20px;
+  }
+  

@@ -1,0 +1,21 @@
+.buttonEmoji {
+  margin: 2px;
+  width: 43px !important;
+  height: 43px !important;
+}
+
+.buttonEmoji:hover {
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Adiciona sombra */
+}
+
+.buttonEmojiSelected {
+  position: relative;
+}
+
+.attachmentIcon {
+  position: absolute;
+  top: 15px;
+  right: -5px;
+  font-size: 18px;
+  color: #000;
+}
