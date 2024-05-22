@@ -1,6 +1,6 @@
-import { AppLayout } from "../../components/AppLayout/AppLayout";
 import React from "react";
+import { ContentLayout } from "../../components/ContentLayout/ContentLayout";
 
 export const Chat = () => {
-  return <AppLayout> Aqui</AppLayout>;
+  return <ContentLayout> Aqui</ContentLayout>;
 };

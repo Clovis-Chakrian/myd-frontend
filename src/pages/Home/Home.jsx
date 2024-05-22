@@ -1,9 +1,9 @@
-import { AppLayout } from "../../components/AppLayout/AppLayout";
 import React from "react";
 import humor from "../../../public/icons/humor.png";
 import { Card, Row, Col, Carousel, Checkbox, Flex } from "antd";
 import Button from "../../components/Button/Button.jsx";
 import style from "./Home.module.css";
+import { ContentLayout } from "../../components/ContentLayout/ContentLayout";
 
 const contentStyle = {
   height: "160px",
@@ -15,7 +15,7 @@ const contentStyle = {
 
 export const Home = () => {
   return (
-    <AppLayout>
+    <ContentLayout>
       <h1>Pronta para avaliar seu dia?</h1>
       <img src={humor} alt="regua de humor" className={style.imgHumor} />
 
@@ -70,6 +70,6 @@ export const Home = () => {
           </Carousel>
         </Col>
       </Row>
-    </AppLayout>
+    </ContentLayout>
   );
 };

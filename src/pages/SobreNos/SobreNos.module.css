@@ -1,0 +1,17 @@
+.divAbout {
+  margin-left: 50px;
+}
+
+@media screen and (max-width: 984px) {
+  .divAbout {
+    align-items: center !important;
+    display: flex !important;
+    justify-content: center !important;
+    flex-direction: column !important;
+    margin-left: 0px;
+  }
+
+  .card {
+    padding-left: 50px !important;
+  }
+}

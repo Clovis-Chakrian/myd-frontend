@@ -14,52 +14,58 @@ import { SelectBall } from "./pages/SelectBall/SelectBall.jsx";
 import { Config } from "./pages/Config/Config.jsx";
 import { ListagemSquad } from "./pages/ListagemSquad/ListagemSquad.jsx";
 import { Chat } from "./pages/Chat/Chat.jsx";
+import MainLayout from "./MainLayout.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <InitialPage />,
-    // errorElement: <ErrorPage />,
-  },
-  {
-    path: "/catalogo-clinicas",
-    element: <CatalogoClinicas />,
-  },
-  {
-    path: "/home",
-    element: <Home />,
-  },
-  {
-    path: "/sobre-nos",
-    element: <SobreNos />,
   },
   {
     path: "/cadastro",
     element: <Cadastro />,
   },
   {
-    path: "/squads",
-    element: <Squads />,
+    path: "/ball",
+    element: <SelectBall />,
   },
   {
     path: "/trilhas",
     element: <Trilhas />,
   },
   {
-    path: "/ball",
-    element: <SelectBall />,
-  },
-  {
-    path: "/config",
-    element: <Config />,
-  },
-  {
-    path: "/listagem-squad",
-    element: <ListagemSquad />,
-  },
-  {
-    path: "/chat",
-    element: <Chat />,
+    path: "/",
+    element: <MainLayout />,
+    children: [
+      {
+        path: "catalogo-clinicas",
+        element: <CatalogoClinicas />,
+      },
+      {
+        path: "home",
+        element: <Home />,
+      },
+      {
+        path: "sobre-nos",
+        element: <SobreNos />,
+      },
+      {
+        path: "squads",
+        element: <Squads />,
+      },
+      {
+        path: "config",
+        element: <Config />,
+      },
+      {
+        path: "listagem-squad",
+        element: <ListagemSquad />,
+      },
+      {
+        path: "chat",
+        element: <Chat />,
+      },
+    ],
   },
 ]);
 
