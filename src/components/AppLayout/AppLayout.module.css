@@ -1,0 +1,20 @@
+.siteLayout {
+  margin-left: 200px !important;
+}
+
+.content {
+  margin: 24px 16px 0;
+  width: 100% !important;
+  overflow: initial !important;
+}
+
+@media (max-width: 767px) {
+  .siteLayout {
+    margin: 0 !important;
+  }
+
+  .content {
+    margin: 0 !important;
+    width: 100% !important;
+  }
+}

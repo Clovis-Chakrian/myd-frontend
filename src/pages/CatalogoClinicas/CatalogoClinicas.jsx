@@ -1,12 +1,12 @@
 import { Space, Row, Col } from "antd";
 import ButtonPrimary from "../../components/Button/Button";
 import { CardLayout } from "../../components/Card/Card";
-import { AppLayout } from "../../components/AppLayout/AppLayout";
 import imgAc from "../../../public/imgClinicas/Ac Clínica.jpg";
 import imgCliapsi from "../../../public/imgClinicas/Cliapsi Psicologia.jpg";
 import imgClimepe from "../../../public/imgClinicas/Climepe.png";
 import imgClinpsi from "../../../public/imgClinicas/Clinpsi.jpg";
 import imgFazer from "../../../public/imgClinicas/Espaço Fazer.jpg";
+import { ContentLayout } from "../../components/ContentLayout/ContentLayout";
 
 export const CatalogoClinicas = () => {
   const clinicas = [
@@ -47,8 +47,8 @@ export const CatalogoClinicas = () => {
   };
 
   return (
-    <AppLayout>
-      <Space direction="vertical" size={16}>
+    <ContentLayout>
+      <Space direction="vertical" size={16} style={{ marginLeft: "50px" }}>
         <Row gutter={[16, 16]}>
           {clinicas.map((clinica) => (
             <Col key={clinica.id} xs={24} sm={24} md={8} lg={8} xl={8}>
@@ -62,6 +62,6 @@ export const CatalogoClinicas = () => {
           ))}
         </Row>
       </Space>
-    </AppLayout>
+    </ContentLayout>
   );
 };

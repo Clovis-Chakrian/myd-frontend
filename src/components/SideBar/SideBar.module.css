@@ -1,18 +1,17 @@
-.menu {
-  background-color: black;
-  align-items: center;
-  text-align: center;
-  font-weight: bold;
-  font-size: 15px;
-  z-index: 1000 !important;
-}
-
 .sideBar {
   background-color: black !important;
   align-items: center;
   text-align: center;
   font-size: 15px;
   z-index: 1000 !important;
+  transition: width 0.3s ease !important;
+  position: fixed !important;
+  top: 0 !important;
+  bottom: 0 !important;
+}
+
+.collapsed {
+  width: 80px !important;
 }
 
 .logo {
@@ -31,4 +30,14 @@
 .menuItem:hover,
 .menuItem::before {
   background-color: #404040 !important;
+}
+
+.menu {
+  background-color: black;
+  align-items: center;
+  text-align: center;
+  font-weight: bold;
+  font-size: 15px;
+  z-index: 1000 !important;
+  transition: width 0.3s ease !important;
 }

@@ -1,0 +1,16 @@
+.content {
+  z-index: 1 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+@media screen and (max-width: 984px) {
+  .children {
+    align-items: center !important;
+    display: flex !important;
+    text-align: center !important;
+    justify-content: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}

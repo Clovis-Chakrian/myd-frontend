@@ -1,7 +1,7 @@
-import { AppLayout } from "../../components/AppLayout/AppLayout";
 import React from "react";
 import { ConfigCards } from "./ConfigCards";
+import { ContentLayout } from "../../components/ContentLayout/ContentLayout";
 
 export const Config = () => {
-  return <AppLayout children={<ConfigCards />}></AppLayout>;
+  return <ContentLayout children={<ConfigCards />}></ContentLayout>;
 };
