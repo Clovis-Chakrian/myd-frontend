@@ -1,75 +1,106 @@
 import React from "react";
-import humor from "../../../public/icons/humor.png";
-import { Card, Row, Col, Carousel, Checkbox, Flex } from "antd";
+import { Row, Col, Checkbox, Carousel } from "antd";
 import Button from "../../components/Button/Button.jsx";
 import style from "./Home.module.css";
 import { ContentLayout } from "../../components/ContentLayout/ContentLayout";
-
-const contentStyle = {
-  height: "160px",
-  color: "#fff",
-  lineHeight: "160px",
-  textAlign: "center",
-  background: "#364d79",
-};
+import { CardLayout } from "../../components/Card/Card.jsx";
+import { ButtonEmoji } from "../../components/ButtonEmoji/ButtonEmoji.jsx";
+import mariaImg from "../../../public/events/maria.jpg";
+import rockImg from "../../../public/events/rock.png";
+import taruImg from "../../../public/events/taru.jpg";
 
 export const Home = () => {
+  const emojis = [
+    { title: "muito feliz", img: "😊", id: 1, color: "#E01754" },
+    { title: "feliz", img: "🙂", id: 2, color: "#3D9CFB" },
+    { title: "normal", img: "😐", id: 3, color: "#72EB70" },
+    { title: "triste", img: "😢", id: 4, color: "#66E7CF" },
+    { title: "muito triste", img: "😭", id: 5, color: "#924BEB" },
+  ];
+
+  const events = [
+    { alt: "showMaria", img: mariaImg, id: 1 },
+    { alt: "rockImg", img: rockImg, id: 2 },
+    { alt: "taruImg", img: taruImg, id: 3 },
+  ];
+
   return (
     <ContentLayout>
-      <h1>Pronta para avaliar seu dia?</h1>
-      <img src={humor} alt="regua de humor" className={style.imgHumor} />
+      <div className={style.configContainer}>
+        <Row className={style.rowOne} justify="center">
+          <Col xs={24} md={16}>
+            <CardLayout
+              cardTitle={"Pronta para avaliar seu dia?"}
+              className={style.card}
+            >
+              <Row style={{ fontWeight: "bold" }}>Olá Ana! 🥰</Row>
+              <Row>Como você está se sentindo hoje?</Row>
+              <Row justify="center">
+                {emojis.map((emoji) => (
+                  <Col key={emoji.id} xs={4}>
+                    <ButtonEmoji icon={emoji.img} background={emoji.color} />
+                  </Col>
+                ))}
+              </Row>
+            </CardLayout>
+          </Col>
+        </Row>
 
-      <Row className={style.rowOne}>
-        <Col sm={24}>
-          <Card className={style.Cards}>
-            <h1>23:59</h1>
-          </Card>
-        </Col>
-      </Row>
+        <Row className={style.rowOne} justify="center">
+          <Col xs={24} md={16}>
+            <CardLayout
+              cardTitle={"Pronta para avaliar seu dia?"}
+              className={style.card}
+            >
+              <Row style={{ fontWeight: "bold" }}>23:59</Row>
+            </CardLayout>
+          </Col>
+        </Row>
 
-      <Row className={style.row}>
-        <Col sm={11}>
-          <Card title="Desafios do dias" className={style.Cards}>
-            <p>
-              <Checkbox /> Beber 2L Água
-            </p>
-            <p>
-              <Checkbox /> Correr 500m
-            </p>
-            <p>
-              <Checkbox /> Comer salada
-            </p>
-            <Button name={"Veja tudo"} className={style.Button} />
-          </Card>
-        </Col>
-        <Col sm={1}></Col>
-        <Col sm={12}>
-          <Card title="Espaço zen" className={style.Cards}>
-            <p>Quanto tempo você precisa relaxar?</p>
-            <h1>--h --min</h1>
-            <Button name={"Vamos começar"} className={style.Button} />
-          </Card>
-        </Col>
-      </Row>
-
-      <Row>
-        <Col sm={24}>
-          <Carousel autoplay className={style.carrosel}>
-            <div>
-              <h3 style={contentStyle}>1</h3>
-            </div>
-            <div>
-              <h3 style={contentStyle}>2</h3>
-            </div>
-            <div>
-              <h3 style={contentStyle}>3</h3>
-            </div>
-            <div>
-              <h3 style={contentStyle}>4</h3>
-            </div>
-          </Carousel>
-        </Col>
-      </Row>
+        <Row className={style.rowOne} justify="center">
+          <Col sm={11}>
+            <CardLayout cardTitle={"Desafios do dia"} className={style.card}>
+              <p>
+                <Checkbox /> Beber 2L Água
+              </p>
+              <p>
+                <Checkbox /> Correr 500m
+              </p>
+              <p>
+                <Checkbox /> Comer salada
+              </p>
+              <Button name={"Veja tudo"} className={style.Button} />
+            </CardLayout>
+          </Col>
+          <Col sm={11} className={style.rowOne}>
+            <CardLayout cardTitle={"Espaço zen"} className={style.card}>
+              <p>Quanto tempo você precisa relaxar?</p>
+              <h1>--h --min</h1>
+              <Button name={"Vamos começar"} className={style.Button} />
+            </CardLayout>
+          </Col>
+        </Row>
+        <Row className={style.rowOne} justify="center">
+          <Col xs={24} md={16}>
+            <CardLayout
+              cardTitle={"Eventos"}
+              stylesCard={style.cardCarousel}
+            >
+              <Carousel autoplay>
+                {events.map((event) => (
+                  <div key={event.id}>
+                    <img
+                      src={event.img}
+                      alt={event.alt}
+                      className={style.eventImage}
+                    />
+                  </div>
+                ))}
+              </Carousel>
+            </CardLayout>
+          </Col>
+        </Row>
+      </div>
     </ContentLayout>
   );
 };
