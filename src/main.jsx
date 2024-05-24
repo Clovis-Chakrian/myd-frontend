@@ -15,6 +15,7 @@ import { Config } from "./pages/Config/Config.jsx";
 import { ListagemSquad } from "./pages/ListagemSquad/ListagemSquad.jsx";
 import { Chat } from "./pages/Chat/Chat.jsx";
 import MainLayout from "./MainLayout.jsx";
+import { TrilhaListagem } from "./pages/TrilhaListagem/TrilhaListagem.jsx";
 
 const router = createBrowserRouter([
   {
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
       {
         path: "chat",
         element: <Chat />,
+      },
+      {
+        path: "listagem-trilhas",
+        element: <TrilhaListagem />,
       },
     ],
   },
