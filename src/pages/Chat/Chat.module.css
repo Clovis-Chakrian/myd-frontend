@@ -1,0 +1,16 @@
+.cabecalhoChat {
+  background-color: #84DAFF;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.nomeSquad {
+  margin: 0 !important;
+  padding: 0;
+}
+
+.numeroSquad {
+  font-size: 12px;
+}

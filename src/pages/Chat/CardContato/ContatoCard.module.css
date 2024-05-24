@@ -1,0 +1,22 @@
+.cardContainer {
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 3px;
+}
+
+
+
+.conteudoContainer {
+  justify-content: flex-start;
+}
+
+.squadNome {
+  margin: 0px;
+  padding: 0px;
+}
+
+.tempoContainer {
+  height: 100%;
+  gap: 2px;
+}
