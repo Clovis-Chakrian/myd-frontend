@@ -18,30 +18,40 @@ export const CatalogoEventos = () => {
       id: 1,
       url: "https://bileto.sympla.com.br/event/92257/d/256152?_gl=1*1moj6by*_ga*MTMwNjAwNjk2MC4xNzE2NzQ3OTM0*_ga_KXH10SQTZF*MTcxNjc1MDgyOC4yLjEuMTcxNjc1MTc5MC42MC4wLjE5NTQzMDI5OTM",
       logo: imgCeara,
+      date: "19 JUL - 19:00",
+      location: "Teatro do Parque - Recife",
     },
     {
       name: "Henry e Klaus - Ilusionismo",
       id: 2,
       url: "https://bileto.sympla.com.br/event/88243/d/223728?_gl=1*oguwlo*_ga*MTMwNjAwNjk2MC4xNzE2NzQ3OTM0*_ga_KXH10SQTZF*MTcxNjc1MDgyOC4yLjEuMTcxNjc1MjA0MS4zMS4wLjE5NTQzMDI5OTM",
       logo: imgHenryKlaus,
+      date: "10 AGO - 20:30",
+      location: "Teatro Guararapes - Olinda",
     },
     {
       name: "Duetos - A Comédia de Peter Quilter",
       id: 3,
       url: "https://bileto.sympla.com.br/event/93845?_gl=1*b2wk05*_ga*MTMwNjAwNjk2MC4xNzE2NzQ3OTM0*_ga_KXH10SQTZF*MTcxNjc1MDgyOC4yLjEuMTcxNjc1Mjc1Mi4zNy4wLjE5NTQzMDI5OTM",
       logo: imgDuetos,
+      date: "01 JUN - 02 JUN",
+      location: "Teatro Paulo Pontes - João Pessoa",
     },
     {
       name: "Nany People - Sob Medida",
       id: 4,
       url: "https://www.sympla.com.br/evento/nany-people-em-recife-sob-medida-nany-canta-fafa/2439902",
       logo: imgNany,
+      date: "14 JUL - 18:00",
+      location: "Teatro do Parque - Recife",
     },
     {
       name: "NU'ZS - Amores, a Música e Palavra de Roberti e Erasmo Carlos ",
       id: 5,
       url: "https://bileto.sympla.com.br/event/92430?_gl=1*pz8v0v*_ga*MTMwNjAwNjk2MC4xNzE2NzQ3OTM0*_ga_KXH10SQTZF*MTcxNjc1MDgyOC4yLjEuMTcxNjc1MzA0Ni42MC4wLjE5NTQzMDI5OTM",
       logo: imgRoberto,
+      date: "24 JUL - 20:00",
+      location: "Teatro Santa Isabel - Recife",
     },
   ];
 
@@ -56,6 +66,12 @@ export const CatalogoEventos = () => {
           {eventos.map((evento) => (
             <Col key={evento.id} xs={24} sm={24} md={8} lg={8} xl={8}>
               <CardLayout cardTitle={evento.name} CardImg={evento.logo}>
+                <div style={{ marginBottom: "8px" }}>
+                  <strong>Data:</strong> {evento.date}
+                </div>
+                <div style={{ marginBottom: "16px" }}>
+                  <strong>Local:</strong> {evento.location}
+                </div>
                 <ButtonPrimary
                   onClick={() => handleSaibaMaisClick(evento.url)}
                   name={"Saiba Mais"}
