@@ -1,6 +1,11 @@
 .mensagemContainer {
+  width: fit-content;
   max-width: 50%;
   margin: 4px 8px;
+}
+
+.usuarioAtual {
+  align-self: flex-end;
 }
 
 .conteudoMensagem {

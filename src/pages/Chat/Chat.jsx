@@ -3,12 +3,33 @@ import { UserOutlined, SearchOutlined } from '@ant-design/icons';
 import { CardContato } from "./CardContato/ContatoCard";
 import style from "./Chat.module.css";
 import { Mensagem } from "./Mensagem/Mensagem";
-import { mensagens } from "./mensagensExemplo";
+import { mensagensExemplo } from "./mensagensExemplo";
 import { contatosExemplo } from "./contatosExemplo";
 import { BotaoEnviar } from "./BotaoEnviar/BotaoEnviar";
 import { BotaoAnexo } from "./BotaoAnexo/BotaoAnexo"
+import { useState } from "react";
 
 export const Chat = () => {
+  const [mensagem, setMensagem] = useState();
+  const [mensagens, setMensagens] = useState(mensagensExemplo);
+
+  function enviarMensagem() {
+    if (mensagem == null || mensagem == "") {
+      return;
+    }
+
+    const novaMensagem = {
+      mensagemId: mensagens.length + 1,
+      autorId: 0,
+      nomeAutor: "Usuário Atual",
+      conteudo: mensagem,
+      hora: "12h"
+    };
+
+    setMensagens([...mensagens, novaMensagem]);
+    setMensagem("");
+  }
+
   return (
     <Row>
       <Col span={6}>
@@ -67,6 +88,7 @@ export const Chat = () => {
                   mostrarNomeAutor={mensagens.indexOf(mensagem) == 0 ? true : mensagens[mensagens.indexOf(mensagem) - 1].nomeAutor !== mensagem.nomeAutor}
                   mostrarHora={mensagens[mensagens.indexOf(mensagem) + 1] != null ? mensagens[mensagens.indexOf(mensagem) + 1].nomeAutor != mensagem.nomeAutor : false}
                   ultimaMensagemSeguida={mensagens[mensagens.indexOf(mensagem) + 1] != null ? mensagens[mensagens.indexOf(mensagem) + 1].nomeAutor != mensagem.nomeAutor : false}
+                  usuarioAtual={mensagem.autorId == 0}
                 />
               );
             })}
@@ -74,10 +96,13 @@ export const Chat = () => {
 
           <Flex align="center" justify="center">
             <Input
-              prefix={<BotaoAnexo clickFunction={() => alert("hey there")} />}
+              prefix={<BotaoAnexo clickFunction={() => alert("Você inseriu um anexo!")} />}
               placeholder="Digite sua mensagem..."
               className={style.mensagemInput}
-              suffix={<BotaoEnviar clickFunction={() => alert("hey there")} />}
+              onChange={e => setMensagem(e.target.value)}
+              value={mensagem}
+              onPressEnter={enviarMensagem}
+              suffix={<BotaoEnviar clickFunction={enviarMensagem} />}
             />
           </Flex>
         </Flex>

@@ -1,4 +1,4 @@
-export const mensagens = [
+export const mensagensExemplo = [
   {
     mensagemId: 1,
     autorId: 1,
