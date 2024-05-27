@@ -1,0 +1,18 @@
+.mensagemContainer {
+  max-width: 50%;
+  margin: 4px 8px;
+}
+
+.conteudoMensagem {
+  border-radius: 10px;
+  padding: 4px 8px;
+  background-color: #C0A2BA;
+}
+
+.mensagemAutor {
+  font-size: 12px;
+}
+
+.removeBorderRadius {
+  border-top-left-radius: 0px !important;
+}

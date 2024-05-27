@@ -6,6 +6,15 @@
   justify-content: space-evenly;
 }
 
+.inputBuscarMensagem {
+  max-width: 400px;
+  margin-bottom: 12px;
+}
+
+.contatosContainer {
+  padding: 0px 8px;
+}
+
 .nomeSquad {
   margin: 0 !important;
   padding: 0;
@@ -13,4 +22,13 @@
 
 .numeroSquad {
   font-size: 12px;
+}
+
+.mensagensContainer {
+  height: 70vh;
+  overflow-y: scroll;
+}
+
+.mensagemInput {
+  max-width: 800px;
 }
