@@ -5,6 +5,7 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { CatalogoClinicas } from "./pages/CatalogoClinicas/CatalogoClinicas.jsx";
 import InitialPage from "./pages/InitialPage/InitialPage.jsx";
+import { CatalogoEventos } from "./pages/CatalogoEventos/CatalogoEventos.jsx";
 import { Home } from "./pages/Home/Home.jsx";
 import { SobreNos } from "./pages/SobreNos/SobreNos.jsx";
 import { Cadastro } from "./pages/Cadastro/Cadastro.jsx";
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
       {
         path: "chat",
         element: <Chat />,
+      },
+      {
+        path: "/catalogo-eventos",
+        element: <CatalogoEventos />,
       },
     ],
   },
