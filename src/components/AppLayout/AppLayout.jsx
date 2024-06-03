@@ -1,19 +1,26 @@
 import { Layout } from "antd";
-import { Content, Footer } from "antd/es/layout/layout";
+import { Outlet } from "react-router-dom";
 import { SiderBar } from "../SideBar/SideBar";
 import { HeaderLayout } from "../HeaderLayout/HeaderLayout";
+import { ContentLayout } from "../ContentLayout/ContentLayout";
+import styles from "./AppLayout.module.css";
+
+const { Content, Footer } = Layout;
 
 // eslint-disable-next-line react/prop-types
-export const AppLayout = ({ children }) => {
+export const AppLayout = () => {
   return (
     <Layout style={{ minHeight: "100vh" }}>
       <SiderBar />
-      <Layout style={{ minHeight: "100vh" }}>
+      <Layout className={styles.siteLayout}>
         <HeaderLayout />
-        <Content style={{ margin: "24px 16px 0" }}>
-          <div style={{ padding: 24, minHeight: "calc(100vh - 112px)" }}>
-            {children}
-          </div>
+        <Content
+          className={styles.content}
+          style={{ margin: "25px 0px 0px", overflow: "initial", width: "100%" }}
+        >
+          <ContentLayout>
+            <Outlet />
+          </ContentLayout>
         </Content>
         <Footer style={{ textAlign: "center" }}>MYD - Make Your Day</Footer>
       </Layout>
