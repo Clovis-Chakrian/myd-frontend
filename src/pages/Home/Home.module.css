@@ -13,7 +13,7 @@
 }
 
 .cardCarousel {
-  width: 100vh !important;
+  width: 100% !important;
   height: 50vh !important;
 }
 
@@ -21,7 +21,7 @@
   height: 35vh !important;
 }
 
-.rowOne {
+.row {
   padding: 20px;
   align-items: center;
   text-align: center;
@@ -33,7 +33,7 @@
 
 @media screen and (max-width: 1421px) {
   .cardCarousel {
-    width: 50vh !important;
+    width: 100% !important;
     height: 50vh !important;
   }
 
