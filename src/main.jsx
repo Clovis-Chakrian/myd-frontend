@@ -16,6 +16,7 @@ import { Config } from "./pages/Config/Config.jsx";
 import { ListagemSquad } from "./pages/ListagemSquad/ListagemSquad.jsx";
 import { Chat } from "./pages/Chat/Chat.jsx";
 import MainLayout from "./MainLayout.jsx";
+import { Login } from "./pages/Login/Login.jsx";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
   {
     path: "/cadastro",
     element: <Cadastro />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
   },
   {
     path: "/ball",

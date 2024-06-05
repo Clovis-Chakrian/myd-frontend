@@ -1,41 +1,63 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import img from "../../../public/icons/imgCadastro.png";
 import logo from "../../../public/icons/logo.png";
 import styles from "./Cadastro.module.css";
-import { Form, Input, DatePicker, Select } from "antd";
+import { Form, Input, DatePicker, Alert } from "antd";
 import Button from "../../components/Button/Button";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   GoogleOutlined,
   LinkedinOutlined,
-  GithubOutlined,
 } from "@ant-design/icons";
 import ButtonRegister from "../../components/ButtonRegister/Button";
+import { httpClient } from "../../services/httpClient";
 
 export const Cadastro = () => {
+  const [isDisabled, setIsDisabled] = useState(true);
+  const [erros, setErros] = useState([]);
   const [formValues, setFormValues] = useState({
-    username: "",
+    nomeCompleto: "",
     email: "",
-    password: "",
+    senha: "",
+    senhaConfirma: "",
+    dataNascimento: null
   });
+
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormValues({
-      ...formValues,
-      [name]: value,
+    setFormValues(currentValues => {
+      const newFormValues = {
+        ...currentValues,
+        [name]: value.trim(),
+      }
+
+      setIsDisabled(!Object.values(newFormValues).every((value) => value.trim() != ""));
+
+      return newFormValues;
     });
   };
 
-  const onFinish = (values) => {
-    console.log("Success:", values);
-  };
+  const handleCadastro = async () => {
+    try {
+      const usuarioNovoDto = {
+        nome: formValues.nomeCompleto,
+        email: formValues.email,
+        senha: formValues.senha,
+        dataNascimento: formValues.dataNascimento
+      }
 
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
-  };
+      const response = await httpClient.post("/signup", {
+        ...usuarioNovoDto
+      });
 
-  const isFormEmpty = !Object.values(formValues).every((value) => value.trim());
+      localStorage.setItem('jwt_token', response.data.dados);
+      navigate('/ball');
+    } catch (err) {
+      setErros([...err.response.data.erros]);
+    }
+  }
 
   return (
     <div className={styles.wrapper}>
@@ -45,24 +67,36 @@ export const Cadastro = () => {
           <p className={styles.subtitle}>Bem vindo!</p>
         </div>
         <div className={styles.form}>
+          <div className={styles.errosContainer}>
+            {erros.map(erro => {
+              return (
+                <Alert
+                  key={erro}
+                  message={erro}
+                  type="error"
+                  closable
+                  onClose={() => setErros(erros.filter(err => err != erro))}
+                />
+              );
+
+            })}
+          </div>
           <Form
             name="basic"
             labelCol={{ span: 24 }}
             className={styles.formItem}
             initialValues={{ remember: true }}
-            onFinish={onFinish}
-            onFinishFailed={onFinishFailed}
             autoComplete="off"
             layout="vertical"
           >
             <Form.Item
-              label="Nome de usuário"
-              name={["user", "username"]}
+              label="Nome Completo"
+              name={["user", "nomeCompleto"]}
               rules={[
-                { required: true, message: "Por favor, digite seu nome de usuário" },
+                { required: true, message: "Por favor, digite seu nome completo" },
               ]}
             >
-              <Input name="username" onChange={handleInputChange} />
+              <Input name="nomeCompleto" onChange={handleInputChange} />
             </Form.Item>
 
             <Form.Item
@@ -83,10 +117,10 @@ export const Cadastro = () => {
                 { required: true, message: "Por favor, coloque sua data de nascimento!" },
               ]}
             >
-              <DatePicker name="dataNascimento" onChange={handleInputChange} />
+              <DatePicker style={{ width: '100%' }} name="dataNascimento" onChange={(e, date) => handleInputChange({ e, target: { name: "dataNascimento", value: date } })} />
             </Form.Item>
 
-            <Form.Item
+            {/* <Form.Item
               label="País"
               name={["user", "pais"]}
               rules={[
@@ -120,7 +154,7 @@ export const Cadastro = () => {
               <Select name="cidade" onChange={handleInputChange}>
                 <Select.Option value="Recife">Recife</Select.Option>
               </Select>
-            </Form.Item>
+            </Form.Item> */}
 
             <Form.Item
               label="Senha"
@@ -152,19 +186,14 @@ export const Cadastro = () => {
                 icon={<GoogleOutlined />}
                 className={styles.buttonRegister}
               />
-              <ButtonRegister
-                icon={<GithubOutlined />}
-                className={styles.buttonRegister}
-              />
             </div>
-            <Link to="/ball">
-              <Button
-                name={"Cadastrar"}
-                className={styles.button}
-                htmlType="submit"
-                disabled={isFormEmpty}
-              />
-            </Link>
+            <Button
+              name={"Cadastrar"}
+              className={styles.button}
+              htmlType="submit"
+              disabled={isDisabled}
+              onClick={handleCadastro}
+            />
           </Form>
         </div>
       </div>
