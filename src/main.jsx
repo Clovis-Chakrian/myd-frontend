@@ -17,6 +17,7 @@ import { ListagemSquad } from "./pages/ListagemSquad/ListagemSquad.jsx";
 import { Chat } from "./pages/Chat/Chat.jsx";
 import MainLayout from "./MainLayout.jsx";
 import { Login } from "./pages/Login/Login.jsx";
+import { App } from "./App.jsx";
 
 const router = createBrowserRouter([
   {
@@ -81,6 +82,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <App>
+      <RouterProvider router={router} />
+    </App>
   </React.StrictMode>
 );
