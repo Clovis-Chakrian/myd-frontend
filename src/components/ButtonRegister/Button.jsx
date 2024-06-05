@@ -7,7 +7,7 @@ const ButtonRegister = ({
   className,
   name,
   onClick,
-  disabledClassName,
+  disabled,
   icon,
 }) => {
   return (
@@ -17,7 +17,7 @@ const ButtonRegister = ({
       icon={icon}
       onClick={onClick}
       className={clsx(styles.actionButton, className)}
-      disabled={disabledClassName}
+      disabled={disabled}
     >
       {name}
     </AntdButton>
