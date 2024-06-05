@@ -1,8 +1,8 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react"
 import { httpClient } from "./services/httpClient"
 import { Spin } from "antd"
 
-// eslint-disable-next-line react/prop-types
 export const App = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false)
 
