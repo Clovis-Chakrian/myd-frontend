@@ -1,0 +1,13 @@
+.enviarAnexoBotao {
+  background-color: #EDF1FF;
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.enviarAnexoBotao:hover {
+  border: none;
+  background-color: #EDF1FF !important;
+  color: #000 !important;
+}

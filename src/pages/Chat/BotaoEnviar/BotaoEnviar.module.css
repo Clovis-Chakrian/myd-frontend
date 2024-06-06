@@ -1,0 +1,13 @@
+.enviarMensagemBotao {
+  background-color: #F2B66D;
+  color: #FFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.enviarMensagemBotao:hover {
+  border: none;
+  background-color: #F2B66D !important;
+  color: #FFF !important;
+}
