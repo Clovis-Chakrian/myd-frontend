@@ -1,18 +1,52 @@
-import { Col, Row, Progress, Checkbox } from "antd";
 import React, { useState } from "react";
-import { ConfigAvatar } from "./ConfigAvatar";
-import { CardLayout } from "../../components/Card/Card";
 import styles from "./Config.module.css";
-import { ButtonEmoji } from "../../components/ButtonEmoji/ButtonEmoji";
+import { PlusOutlined } from "@ant-design/icons";
+import { Image, Upload } from "antd";
+import { Tags } from "../../components/Tags/Tags";
+import Button from "../../components/Button/Button";
+import { Link } from "react-router-dom";
 
-const conicColors = {
-  "0%": "#87d068",
-  "50%": "#ffe58f",
-  "100%": "#ffccc7",
-};
+const getBase64 = (file) =>
+  new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = (error) => reject(error);
+  });
 
 export const ConfigCards = () => {
-  const [offensiveDays, setOffensiveDays] = useState(3);
+  const [previewOpen, setPreviewOpen] = useState(false);
+  const [previewImage, setPreviewImage] = useState("");
+  const [fileList, setFileList] = useState([]);
+
+  const handlePreview = async (file) => {
+    if (!file.url && !file.preview) {
+      file.preview = await getBase64(file.originFileObj);
+    }
+    setPreviewImage(file.url || file.preview);
+    setPreviewOpen(true);
+  };
+
+  const handleChange = ({ fileList: newFileList }) => setFileList(newFileList);
+
+  const uploadButton = (
+    <button
+      style={{
+        border: 0,
+        background: "none",
+      }}
+      type="button"
+    >
+      <PlusOutlined />
+      <div
+        style={{
+          marginTop: 8,
+        }}
+      >
+        Upload
+      </div>
+    </button>
+  );
 
   const performance = [
     { title: "Meditação", progress: 75, id: 1 },
@@ -20,94 +54,74 @@ export const ConfigCards = () => {
     { title: "Relaxamento", progress: 5, id: 3 },
   ];
 
-  const emojis = [
-    { title: "muito feliz", img: "😊", id: 1, color: "#E01754" },
-    { title: "feliz", img: "🙂", id: 2, color: "#3D9CFB" },
-    { title: "normal", img: "😐", id: 3, color: "#72EB70" },
-    { title: "triste", img: "😢", id: 4, color: "#66E7CF" },
-    { title: "muito triste", img: "😭", id: 5, color: "#924BEB" },
-  ];
-
   const ofensiva = [
-    { title: "Seg", id: 1, ofensiva: true },
-    { title: "Ter", id: 2, ofensiva: true },
-    { title: "Quart", id: 3, ofensiva: true },
-    { title: "Quin", id: 4, ofensiva: false },
-    { title: "Sex", id: 5, ofensiva: false },
-    { title: "Sab", id: 6, ofensiva: false },
-    { title: "Dom", id: 7, ofensiva: false },
+    { title: "Seg", id: 1, ofensiva: true, desafios: 2, color: "#72EB70" },
+    { title: "Ter", id: 2, ofensiva: true, desafios: 5, color: "#F2B66D" },
+    { title: "Quart", id: 3, ofensiva: true, desafios: 1, color: "#E01754" },
+    { title: "Quin", id: 4, ofensiva: false, desafios: 0, color: "#E01754" },
+    { title: "Dom", id: 7, ofensiva: false, desafios: 0, color: "#E01754" },
   ];
-
-  const handleCheckboxChange = (id, value) => {
-    const updatedOffensiva = ofensiva.map((day) => {
-      if (day.id === id) {
-        return { ...day, ofensiva: value };
-      }
-      return day;
-    });
-
-    setOffensiva(updatedOffensiva);
-
-    const updatedOffensiveDays = updatedOffensiva.filter(
-      (day) => day.ofensiva
-    ).length;
-    setOffensiveDays(updatedOffensiveDays);
-  };
 
   return (
-    <div className={styles.configContainer}>
-      <div className={styles.avatarDiv}>
-        <ConfigAvatar />
+    <div className={styles.divCol}>
+      <div className={styles.uploadImg}>
+        <Upload
+          action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
+          listType="picture-card"
+          fileList={fileList}
+          onPreview={handlePreview}
+          onChange={handleChange}
+        >
+          {fileList.length >= 1 ? null : uploadButton}
+        </Upload>
+        {previewImage && (
+          <Image
+            wrapperStyle={{
+              display: "none",
+            }}
+            preview={{
+              visible: previewOpen,
+              onVisibleChange: (visible) => setPreviewOpen(visible),
+              afterOpenChange: (visible) => !visible && setPreviewImage(""),
+            }}
+            src={previewImage}
+          />
+        )}
       </div>
 
-      <Row gutter={[16, 16]}>
-        <Col xs={24} md={12} lg={8}>
-          <CardLayout cardTitle={"Desempenho"} className={styles.card}>
-            {performance.map((item) => (
-              <div key={item.id} style={{ marginBottom: 16 }}>
-                <h4>{item.title}</h4>
-                <Progress
-                  percent={item.progress}
-                  showInfo={true}
-                  strokeColor={conicColors}
-                />
-              </div>
-            ))}
-          </CardLayout>
-        </Col>
-        <Col xs={24} md={12} lg={8}>
-          <CardLayout cardTitle={"Diário de humor"} className={styles.card}>
-            <Row style={{ fontWeight: "bold" }}>Olá Ana! 🥰</Row>
-            <Row>Como você está se sentindo hoje?</Row>
-            <Row>
-              {emojis.map((emoji) => (
-                <Col key={emoji.id}>
-                  <ButtonEmoji icon={emoji.img} background={emoji.color} />
-                </Col>
-              ))}
-            </Row>
-          </CardLayout>
-        </Col>
-        <Col xs={24} md={12} lg={8}>
-          <CardLayout cardTitle={"Ofensiva"} className={styles.card}>
-            {ofensiva.map((day) => (
-              <Row key={day.id}>
-                <Checkbox
-                  checked={day.ofensiva}
-                  onChange={(e) =>
-                    handleCheckboxChange(day.id, e.target.checked)
-                  }
-                >
-                  {day.title}
-                </Checkbox>
-              </Row>
-            ))}
-            <Row
-              style={{ fontWeight: "bold", marginTop: "10px" }}
-            >{`Parabéns! Sua ofensiva é de ${offensiveDays} / 7`}</Row>
-          </CardLayout>
-        </Col>
-      </Row>
+      <div className={styles.greeting}>
+        <h1>Olá, Anna!</h1>
+        <span>
+          Você realizou {ofensiva.filter((e) => e.ofensiva).length} desafios
+          hoje!
+        </span>
+      </div>
+
+      <div className={styles.points}>
+        <h1>Total de pontos: 6 pts</h1>
+        <span>Você está realizando desafios a 3 dias.</span>
+      </div>
+
+      <div className={styles.report}>
+        <h2>Relatório Semanal</h2>
+      </div>
+
+      <div className={styles.ofensiva}>
+        {ofensiva.map((e) => (
+          <Tags
+            key={e.id}
+            title={e.title}
+            numero={e.desafios}
+            cor={e.color}
+            desafios={e.desafios}
+          />
+        ))}
+      </div>
+      <div className={styles.buttonDiv}>
+        <Link to="/home">
+          <Button name={"Explorar"} className={styles.button} />
+        </Link>
+      </div>
     </div>
   );
 };
