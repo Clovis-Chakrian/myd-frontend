@@ -1,4 +1,4 @@
-import logo from "../../../public/icons/logo.png";
+import logo from "../../../public/icons/logoinitial.png";
 import React, { useState } from "react";
 import { SolidProgress } from "../../components/SolidProgress/SolidProgress";
 import styles from "./SelectBall.module.css";

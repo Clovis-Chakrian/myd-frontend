@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "../../components/Button/Button";
-import logo from "../../../public/icons/logo.png";
+import logo from "../../../public/icons/logoinitial.png";
 import styles from "./InitialPage.module.css";
 import { Row, Col } from "antd";
 import { Link } from "react-router-dom";

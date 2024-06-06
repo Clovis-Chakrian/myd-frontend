@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import img from "../../../public/icons/imgCadastro.png";
-import logo from "../../../public/icons/logo.png";
+import logo from "../../../public/icons/logoinitial.png";
 import styles from "./Cadastro.module.css";
 import { Form, Input, DatePicker, Select } from "antd";
 import Button from "../../components/Button/Button";

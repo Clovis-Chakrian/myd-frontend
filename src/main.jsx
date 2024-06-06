@@ -16,6 +16,9 @@ import { ListagemSquad } from "./pages/ListagemSquad/ListagemSquad.jsx";
 import { Chat } from "./pages/Chat/Chat.jsx";
 import MainLayout from "./MainLayout.jsx";
 import { TrilhaListagem } from "./pages/TrilhaListagem/TrilhaListagem.jsx";
+import { MinhasTrilhas } from "./pages/MinhasTrilhas/MinhasTrilhas.jsx";
+import { DetalhesTrilhas } from "./pages/DetalhesTrilhas/DetalhesTrilhas.jsx";
+import { GerarDesafiosTrilha } from "./pages/GerarDesafiosTrilha/GerarDesafiosTrilha.jsx";
 
 const router = createBrowserRouter([
   {
@@ -70,6 +73,20 @@ const router = createBrowserRouter([
         path: "listagem-trilhas",
         element: <TrilhaListagem />,
       },
+      {
+        path: "minhas-trilhas",
+        element: <MinhasTrilhas />,
+      },
+      {
+        path: "/:trilhaId",
+        element: <DetalhesTrilhas/>,
+      },
+      {
+        path: "gerar-desafios-trilha/:trilhaId",
+        element: <GerarDesafiosTrilha/>,
+      },
+
+      
     ],
   },
 ]);
