@@ -1,7 +1,6 @@
 import { Layout } from "antd";
 import { Outlet } from "react-router-dom";
 import { SiderBar } from "../SideBar/SideBar";
-import { HeaderLayout } from "../HeaderLayout/HeaderLayout";
 import { ContentLayout } from "../ContentLayout/ContentLayout";
 import styles from "./AppLayout.module.css";
 
@@ -13,7 +12,6 @@ export const AppLayout = () => {
     <Layout style={{ minHeight: "100vh" }}>
       <SiderBar />
       <Layout className={styles.siteLayout}>
-        <HeaderLayout />
         <Content
           className={styles.content}
           style={{ margin: "25px 0px 0px", overflow: "initial", width: "100%" }}
