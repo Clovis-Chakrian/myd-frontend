@@ -2,9 +2,22 @@ import Button from "../../components/Button/Button";
 import logo from "../../../public/icons/logo.png";
 import styles from "./InitialPage.module.css";
 import { Row, Col } from "antd";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
-const InitialPage = () => {
+export const InitialPage = () => {
+  const navigate = useNavigate();
+
+  const handleIsAutenticado = () => {
+    const token = localStorage.getItem("jwt_token");
+
+    if (token) navigate("/home");
+  }
+
+  useEffect(() => {
+    handleIsAutenticado();
+  }, []);
+
   return (
     <div className={styles.InitialPage}>
       <Row>
@@ -35,5 +48,3 @@ const InitialPage = () => {
     </div>
   );
 };
-
-export default InitialPage;
