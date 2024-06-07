@@ -31,7 +31,7 @@ export const SelectBall = () => {
           <Button
             name={"Seguir"}
             className={styles.button}
-            disabledClassName={progress === 0}
+            disabled={progress === 0}
           />
         </Link>
       </div>

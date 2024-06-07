@@ -7,7 +7,7 @@ const ButtonCircule = ({
   className,
   name,
   onClick,
-  disabledClassName,
+  disabled,
   icon,
   isSelected,
 }) => {
@@ -20,7 +20,7 @@ const ButtonCircule = ({
       className={clsx(styles.actionButton, className, {
         [styles.selected]: isSelected,
       })}
-      disabled={disabledClassName}
+      disabled={disabled}
     >
       {name}
     </AntdButton>
