@@ -9,7 +9,7 @@ import { useParams, useNavigate } from "react-router-dom";
 export const GerarDesafiosTrilha =()=>{
     const {trilhaId} = useParams();
     const navigate = useNavigate();
-    const handleClick = () => navigate(`/gerar-desafios-trilha/${trilhaId}`);
+    const handleClick = () => navigate(`/meus-desafios/${trilhaId}`);
     return(
         <div className={styles.page}>
             <div className={styles.center}>
