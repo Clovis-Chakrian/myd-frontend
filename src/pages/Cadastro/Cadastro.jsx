@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import img from "../../../public/icons/imgCadastro.png";
 import logo from "../../../public/icons/logoinitial.png";
 import styles from "./Cadastro.module.css";
@@ -13,6 +13,7 @@ import ButtonRegister from "../../components/ButtonRegister/Button";
 import { httpClient } from "../../services/httpClient";
 
 export const Cadastro = () => {
+  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [isDisabled, setIsDisabled] = useState(true);
   const [erros, setErros] = useState([]);
@@ -23,8 +24,6 @@ export const Cadastro = () => {
     senhaConfirma: "",
     dataNascimento: null
   });
-
-  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -61,6 +60,16 @@ export const Cadastro = () => {
     }
     setIsLoading(false);
   }
+
+  const handleIsAutenticado = () => {
+    const token = localStorage.getItem("jwt_token");
+
+    if (token) navigate("/home");
+  }
+
+  useEffect(() => {
+    handleIsAutenticado();
+  }, []);
 
   return (
     <Spin spinning={isLoading}>
