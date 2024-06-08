@@ -55,11 +55,11 @@ export const ConfigCards = () => {
   ];
 
   const ofensiva = [
-    { title: "Seg", id: 1, ofensiva: true, desafios: 2, color: "#72EB70" },
-    { title: "Ter", id: 2, ofensiva: true, desafios: 5, color: "#F2B66D" },
-    { title: "Quart", id: 3, ofensiva: true, desafios: 1, color: "#E01754" },
-    { title: "Quin", id: 4, ofensiva: false, desafios: 0, color: "#E01754" },
-    { title: "Dom", id: 7, ofensiva: false, desafios: 0, color: "#E01754" },
+    { title: "Seg", id: 1, ofensiva: true, desafios: 5, color: "#72EB70" },
+    { title: "Ter", id: 2, ofensiva: true, desafios: 2, color: "#F2B66D" },
+    { title: "Quart", id: 3, ofensiva: false, desafios: 0, color: "#A0A0A0" },
+    { title: "Quin", id: 4, ofensiva: false, desafios: 0, color: "#A0A0A0" },
+    { title: "Dom", id: 7, ofensiva: false, desafios: 0, color: "#A0A0A0" },
   ];
 
   return (
@@ -118,7 +118,7 @@ export const ConfigCards = () => {
         ))}
       </div>
       <div className={styles.buttonDiv}>
-        <Link to="/home">
+        <Link to="/explore">
           <Button name={"Explorar"} className={styles.button} />
         </Link>
       </div>
