@@ -1,0 +1,38 @@
+.button {
+  width: 200px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.buttonDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 30px;
+  width: 100%;
+}
+
+.list{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 20px;
+    margin: 8vh 0;
+}
+
+.center{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.line{
+  width: 100%;
+  border: 1px solid #FFA64D;
+  margin-bottom: 2%;
+}

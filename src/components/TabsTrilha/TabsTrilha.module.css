@@ -1,0 +1,26 @@
+.tabs{
+  margin: 20px;
+}
+
+.tabsText {
+  font-family: "Epilogue", sans-serif;
+  color: #2f2f2f;
+  font-size: 30px;
+  font-weight: bold;
+}
+.tabsText p {
+  padding: 5px 100px ;
+  margin: 0;
+}
+.tabsText p:hover {
+  background-color: rgba(255, 179, 104, 0.25);
+  border-radius: 80px;
+}
+
+.backGround{
+  background-color: rgba(255, 179, 104, 0.25);
+  border-radius: 80px;
+}
+
+
+
