@@ -11,7 +11,9 @@ export const TabsTrilha = () => {
       path: "/listagem-trilhas",
       children: (
         <Link to="/listagem-trilhas">
-          <span className={style.tabsText}><p>Todas as Trilhas</p></span>
+          <span className={style.tabsText}>
+            <p>Todas as Trilhas</p>
+          </span>
         </Link>
       ),
     },
@@ -21,7 +23,9 @@ export const TabsTrilha = () => {
       path: "/minhas-trilhas",
       children: (
         <Link to="/minhas-trilhas">
-          <span className={style.tabsText}><p>Minhas Trilhas</p></span>
+          <span className={style.tabsText}>
+            <p>Minhas Trilhas</p>
+          </span>
         </Link>
       ),
     },
