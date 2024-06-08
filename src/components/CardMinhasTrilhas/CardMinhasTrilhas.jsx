@@ -3,24 +3,22 @@ import { Card } from "antd";
 import { useNavigate } from "react-router-dom";
 import { ResumoDesafiosTrilhas } from "../ResumoDesafiosTrilhas/ResumoDesafiosTrilhas";
 
-export const CardMinhasTrilhas = ({ text, imageUrl,trilhaId}) => {
+export const CardMinhasTrilhas = ({ text, imageUrl, trilhaId }) => {
   const navigate = useNavigate();
   const handleClick = () => navigate(`/meus-dados-trilha/${trilhaId}`);
   return (
-      <Card  className={styles.card}
-      onClick={handleClick}
-      >
-        <div className={styles.divCard}>
-          <div>
-            <h3 className={styles.h3Card}>{text}</h3>
-          </div>
-          <div style={{ maxWidth: 200, maxHeight: 100 }}>
-            <img className={styles.imgCard} src={imageUrl} alt="Imagem" />
-          </div>
-          <div className={styles.details}>
-            <ResumoDesafiosTrilhas desafiosConcluidos={"3"}  totalDesafios={"5"}/>
-          </div>
+    <Card className={styles.card} onClick={handleClick}>
+      <div className={styles.divCard}>
+        <div>
+          <h3 className={styles.h3Card}>{text}</h3>
         </div>
-      </Card>
+        <div>
+          <img className={styles.imgCard} src={imageUrl} alt="Imagem" />
+        </div>
+        <div className={styles.details}>
+          <ResumoDesafiosTrilhas desafiosConcluidos={"3"} totalDesafios={"5"} />
+        </div>
+      </div>
+    </Card>
   );
 };

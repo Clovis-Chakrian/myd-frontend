@@ -7,7 +7,7 @@
 .divCard {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 .h3Card {
   font-size: 2.3vw;
@@ -22,15 +22,20 @@
 
 .card:hover {
   border: 4px solid #f2b66d;
-  border-radius: 10px;
 }
 
-@media screen and (max-width: 516px) {
+@media screen and (max-width: 1421px) {
   .card {
-    width: 120%;
+    width: 75%;
     height: 25%;
   }
   .h3Card {
     font-size: 23px;
   }
 }
+
+/* @media screen and (max-width: 1421px) {
+      .cardCarousel {
+        width: 50vh !important;
+        height: 50vh !important;
+      } */

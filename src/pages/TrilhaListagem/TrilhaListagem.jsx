@@ -9,25 +9,22 @@ import trabalhoComunitario from "../../../public/TrilhasImg/trilhaTrabalhoComuni
 import relaxamento from "../../../public/TrilhasImg/trilhaRelaxamento.png";
 import { CardListagemTrilhas } from "../../components/CardListagemTrilhas/CardListagemTrilhas";
 
-
 export const TrilhaListagem = () => {
-  
   const trilhas = [
-    { titulo: "Relaxamento", imageUrl: relaxamento , trilhaId : 1},
-    { titulo: "Interação Social", imageUrl: trabalhoComunitario, trilhaId : 2 },
-    { titulo: "Rotina Saúdavel", imageUrl: conexaoNatureza,  trilhaId : 3},
-    { titulo: "Praticar Gratidão", imageUrl: praticarGratidao,  trilhaId : 4 },
-    { titulo: "Conexão com a Natureza", imageUrl: rotinaSaudavel , trilhaId : 5 },
-    { titulo: "Trabalho Comunitário", imageUrl: InteracaoSocial ,  trilhaId : 6},
+    { titulo: "Relaxamento", imageUrl: relaxamento, trilhaId: 1 },
+    { titulo: "Interação Social", imageUrl: trabalhoComunitario, trilhaId: 2 },
+    { titulo: "Rotina Saúdavel", imageUrl: conexaoNatureza, trilhaId: 3 },
+    { titulo: "Praticar Gratidão", imageUrl: praticarGratidao, trilhaId: 4 },
+    { titulo: "Conexão com a Natureza", imageUrl: rotinaSaudavel, trilhaId: 5 },
+    { titulo: "Trabalho Comunitário", imageUrl: InteracaoSocial, trilhaId: 6 },
   ];
-  
+
   return (
     <div className={styles.center}>
       <TabsTrilha></TabsTrilha>
       <hr className={styles.line} />
 
       <BarraPesquisaTrilha />
-
 
       <div className={styles.list}>
         {trilhas.map((trilha, index) => (
@@ -38,7 +35,6 @@ export const TrilhaListagem = () => {
             imageUrl={trilha.imageUrl}
             trilhaId={trilha.trilhaId}
           />
-          
         ))}
       </div>
     </div>
