@@ -1,4 +1,4 @@
-.tabs{
+.tabs {
   margin: 20px;
 }
 
@@ -9,7 +9,7 @@
   font-weight: bold;
 }
 .tabsText p {
-  padding: 5px 100px ;
+  padding: 5px 100px;
   margin: 0;
 }
 .tabsText p:hover {
@@ -17,10 +17,16 @@
   border-radius: 80px;
 }
 
-.backGround{
+.backGround {
   background-color: rgba(255, 179, 104, 0.25);
   border-radius: 80px;
 }
 
-
-
+@media screen and (max-width: 516px) {
+  .tabsText {
+    font-size: 20px;
+  }
+  .tabsText p {
+    padding: 15px;
+  }
+}
