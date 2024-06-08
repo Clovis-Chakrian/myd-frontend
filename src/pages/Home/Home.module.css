@@ -19,9 +19,10 @@
 
 .eventImage {
   height: 35vh !important;
+  width: 100%;
 }
 
-.row {
+.rowOne {
   padding: 20px;
   align-items: center;
   text-align: center;
