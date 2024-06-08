@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import logo from "../../../public/icons/logo.png";
+import logo from "../../../public/icons/logoinitial.png";
 import styles from "./Trilhas.module.css";
 import { SolidProgress } from "../../components/SolidProgress/SolidProgress";
 import InteracaoSocial from "../../../public/TrilhasImg/trilhaInteracaoSocial.png";
