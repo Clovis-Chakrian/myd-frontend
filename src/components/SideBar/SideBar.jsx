@@ -1,6 +1,5 @@
 import { Layout, Menu } from "antd";
 import { Link } from "react-router-dom";
-import React from "react";
 import styles from "./SideBar.module.css";
 import logo from "../../../public/icons/logo.png";
 import iconChat from "../../../public/icons/chat.svg";
@@ -41,8 +40,8 @@ export const SiderBar = () => (
         },
         {
           icon: <img src={iconTree} alt="Tree" className={styles.icon} />,
-          label: "Squads",
-          link: "/squads",
+          label: "Trilhas",
+          link: "/listagem-trilhas",
         },
         {
           icon: <img src={iconChat} alt="Chat" className={styles.icon} />,
