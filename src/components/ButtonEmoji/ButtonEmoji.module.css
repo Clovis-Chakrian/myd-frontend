@@ -19,3 +19,12 @@
   font-size: 18px;
   color: #000;
 }
+
+.iconWithPercent {
+  display: flex;
+  align-items: center !important;
+}
+
+.percent {
+  margin-left: 5px;
+}

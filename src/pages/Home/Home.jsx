@@ -44,19 +44,25 @@ export const Home = () => {
     listDesafio();
   }, []);
 
-  console.log(desafios);
   return (
     <ContentLayout>
       <div className={style.configContainer}>
         <Row className={style.rowOne} justify="center" gutter={[16, 16]}>
           <Col xs={24} md={12}>
-            <CardLayout cardTitle={"Pronta para avaliar seu dia?"} className={style.card}>
+            <CardLayout
+              cardTitle={"Pronta para avaliar seu dia?"}
+              className={style.card}
+            >
               <Row style={{ fontWeight: "bold" }}>Olá Ana! 🥰</Row>
               <Row>Como você está se sentindo hoje?</Row>
               <Row justify="center">
                 {emojis.map((emoji) => (
                   <Col key={emoji.id} xs={4}>
-                    <ButtonEmoji icon={emoji.img} background={emoji.color} />
+                    <ButtonEmoji
+                      icon={emoji.img}
+                      background={emoji.color}
+                      selectedEmoji
+                    />
                   </Col>
                 ))}
               </Row>
@@ -64,7 +70,9 @@ export const Home = () => {
           </Col>
           <Col xs={24} md={12}>
             <CardLayout cardTitle={"Cronômetro"} className={style.card}>
-              <Row style={{ fontWeight: "bold" }} justify="center">23:59</Row>
+              <Row style={{ fontWeight: "bold" }} justify="center">
+                23:59
+              </Row>
             </CardLayout>
           </Col>
         </Row>
@@ -115,7 +123,3 @@ export const Home = () => {
     </ContentLayout>
   );
 };
-
-
-
-

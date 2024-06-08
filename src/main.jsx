@@ -25,7 +25,7 @@ import { Login } from "./pages/Login/Login.jsx";
 import { App } from "./App.jsx";
 import { AuthLayer } from "./AuthLayer.jsx";
 import { MeusDesafios } from "./pages/MeusDesafios/MeusDesafios.jsx";
-
+import { Explore } from "./pages/Explore/Explore.jsx";
 
 const router = createBrowserRouter([
   {
@@ -94,7 +94,7 @@ const router = createBrowserRouter([
           },
           {
             path: "meus-dados-trilha/:trilhaId",
-            element: <MeusDadosTrilha />
+            element: <MeusDadosTrilha />,
           },
           {
             path: "/meus-desafios/:trilhaId",
@@ -112,9 +112,13 @@ const router = createBrowserRouter([
             path: "/catalogo-eventos",
             element: <CatalogoEventos />,
           },
+          {
+            path: "/explore",
+            element: <Explore />,
+          },
         ],
       },
-    ]
+    ],
   },
 ]);
 
