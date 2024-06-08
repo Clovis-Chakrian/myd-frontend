@@ -5,7 +5,7 @@ import { ResumoDesafiosTrilhas } from "../ResumoDesafiosTrilhas/ResumoDesafiosTr
 
 export const CardMinhasTrilhas = ({ text, imageUrl,trilhaId}) => {
   const navigate = useNavigate();
-  const handleClick = () => navigate(`/${trilhaId}`);
+  const handleClick = () => navigate(`/meus-dados-trilha/${trilhaId}`);
   return (
       <Card  className={styles.card}
       onClick={handleClick}

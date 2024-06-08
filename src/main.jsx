@@ -20,9 +20,11 @@ import { TrilhaListagem } from "./pages/TrilhaListagem/TrilhaListagem.jsx";
 import { MinhasTrilhas } from "./pages/MinhasTrilhas/MinhasTrilhas.jsx";
 import { DetalhesTrilhas } from "./pages/DetalhesTrilhas/DetalhesTrilhas.jsx";
 import { GerarDesafiosTrilha } from "./pages/GerarDesafiosTrilha/GerarDesafiosTrilha.jsx";
+import { MeusDadosTrilha } from "./pages/MeusDadosTrilha/MeusDadosTrilha.jsx";
 import { Login } from "./pages/Login/Login.jsx";
 import { App } from "./App.jsx";
 import { AuthLayer } from "./AuthLayer.jsx";
+import { MeusDesafios } from "./pages/MeusDesafios/MeusDesafios.jsx";
 
 
 const router = createBrowserRouter([
@@ -89,6 +91,14 @@ const router = createBrowserRouter([
           {
             path: "minhas-trilhas",
             element: <MinhasTrilhas />,
+          },
+          {
+            path: "meus-dados-trilha/:trilhaId",
+            element: <MeusDadosTrilha />
+          },
+          {
+            path: "/meus-desafios/:trilhaId",
+            element: <MeusDesafios />,
           },
           {
             path: "/:trilhaId",
