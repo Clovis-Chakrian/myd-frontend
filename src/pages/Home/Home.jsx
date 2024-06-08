@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Row, Col, Checkbox, Carousel } from "antd";
+import { Row, Col, Checkbox, Carousel, Alert } from "antd";
 import Button from "../../components/Button/Button.jsx";
 import style from "./Home.module.css";
 import { ContentLayout } from "../../components/ContentLayout/ContentLayout";
@@ -8,9 +8,9 @@ import { ButtonEmoji } from "../../components/ButtonEmoji/ButtonEmoji.jsx";
 import mariaImg from "../../../public/events/maria.jpg";
 import rockImg from "../../../public/events/rock.png";
 import taruImg from "../../../public/events/taru.jpg";
-
+import { Link } from "react-router-dom";
+import { httpClientJwt } from "../../services/httpClient";
 export const Home = () => {
-  
   const [desafios, setDesafios] = useState([]);
   const [erros, setErros] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -30,14 +30,13 @@ export const Home = () => {
   ];
 
   const listDesafio = async () => {
-    setIsLoading(true);
     try {
       const response = await httpClientJwt.get("/desafios");
+
       setDesafios(response.data);
+      setIsLoading(false);
     } catch (err) {
       setErros([...err.response.data.erros]);
-    } finally {
-      setIsLoading(false);
     }
   };
 
@@ -45,7 +44,7 @@ export const Home = () => {
     listDesafio();
   }, []);
 
-console.log(desafios)
+  console.log(desafios);
   return (
     <ContentLayout>
       <div className={style.configContainer}>
@@ -64,7 +63,7 @@ console.log(desafios)
             </CardLayout>
           </Col>
           <Col xs={24} md={12}>
-            <CardLayout cardTitle={"Cronometro"} className={style.card}>
+            <CardLayout cardTitle={"Cronômetro"} className={style.card}>
               <Row style={{ fontWeight: "bold" }} justify="center">23:59</Row>
             </CardLayout>
           </Col>
@@ -73,15 +72,17 @@ console.log(desafios)
         <Row className={style.rowOne} justify="center" gutter={[16, 16]}>
           <Col xs={24} md={12}>
             <CardLayout cardTitle={"Desafios do dia"} className={style.card}>
-                {erros.length > 0 && (
-                  <Alert message={erros.join(", ")} type="error" />
-                )}
-                {desafios.map((des) => (
-                  <p key={des.desafioId}>
-                    <Checkbox /> {des.titulo}
-                  </p>
-                ))}
-              <Button name={"Veja tudo"} className={style.Button} />
+              {erros.length > 0 && (
+                <Alert message={erros.join(", ")} type="error" />
+              )}
+              {desafios.map((des) => (
+                <p key={des.desafioId}>
+                  <Checkbox /> {des.titulo}
+                </p>
+              ))}
+              <Link to="/minhas-trilhas">
+                <Button name={"Veja tudo"} className={style.Button} />
+              </Link>
             </CardLayout>
           </Col>
           <Col xs={24} md={12}>
