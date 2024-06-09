@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Row, Col, Checkbox, Carousel } from "antd";
 import Button from "../../components/Button/Button.jsx";
 import style from "./Home.module.css";
@@ -10,6 +10,11 @@ import rockImg from "../../../public/events/rock.png";
 import taruImg from "../../../public/events/taru.jpg";
 
 export const Home = () => {
+  
+  const [desafios, setDesafios] = useState([]);
+  const [erros, setErros] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
   const emojis = [
     { title: "muito feliz", img: "😊", id: 1, color: "#E01754" },
     { title: "feliz", img: "🙂", id: 2, color: "#3D9CFB" },
@@ -24,15 +29,29 @@ export const Home = () => {
     { alt: "taruImg", img: taruImg, id: 3 },
   ];
 
+  const listDesafio = async () => {
+    setIsLoading(true);
+    try {
+      const response = await httpClientJwt.get("/desafios");
+      setDesafios(response.data);
+    } catch (err) {
+      setErros([...err.response.data.erros]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    listDesafio();
+  }, []);
+
+console.log(desafios)
   return (
     <ContentLayout>
       <div className={style.configContainer}>
-        <Row className={style.rowOne} justify="center">
-          <Col xs={24} md={16}>
-            <CardLayout
-              cardTitle={"Pronta para avaliar seu dia?"}
-              className={style.card}
-            >
+        <Row className={style.rowOne} justify="center" gutter={[16, 16]}>
+          <Col xs={24} md={12}>
+            <CardLayout cardTitle={"Pronta para avaliar seu dia?"} className={style.card}>
               <Row style={{ fontWeight: "bold" }}>Olá Ana! 🥰</Row>
               <Row>Como você está se sentindo hoje?</Row>
               <Row justify="center">
@@ -44,35 +63,28 @@ export const Home = () => {
               </Row>
             </CardLayout>
           </Col>
-        </Row>
-
-        <Row className={style.rowOne} justify="center">
-          <Col xs={24} md={16}>
-            <CardLayout
-              cardTitle={"Pronta para avaliar seu dia?"}
-              className={style.card}
-            >
-              <Row style={{ fontWeight: "bold" }}>23:59</Row>
+          <Col xs={24} md={12}>
+            <CardLayout cardTitle={"Cronometro"} className={style.card}>
+              <Row style={{ fontWeight: "bold" }} justify="center">23:59</Row>
             </CardLayout>
           </Col>
         </Row>
 
-        <Row className={style.rowOne} justify="center">
-          <Col sm={11}>
+        <Row className={style.rowOne} justify="center" gutter={[16, 16]}>
+          <Col xs={24} md={12}>
             <CardLayout cardTitle={"Desafios do dia"} className={style.card}>
-              <p>
-                <Checkbox /> Beber 2L Água
-              </p>
-              <p>
-                <Checkbox /> Correr 500m
-              </p>
-              <p>
-                <Checkbox /> Comer salada
-              </p>
+                {erros.length > 0 && (
+                  <Alert message={erros.join(", ")} type="error" />
+                )}
+                {desafios.map((des) => (
+                  <p key={des.desafioId}>
+                    <Checkbox /> {des.titulo}
+                  </p>
+                ))}
               <Button name={"Veja tudo"} className={style.Button} />
             </CardLayout>
           </Col>
-          <Col sm={11} className={style.rowOne}>
+          <Col xs={24} md={12}>
             <CardLayout cardTitle={"Espaço zen"} className={style.card}>
               <p>Quanto tempo você precisa relaxar?</p>
               <h1>--h --min</h1>
@@ -80,12 +92,10 @@ export const Home = () => {
             </CardLayout>
           </Col>
         </Row>
+
         <Row className={style.rowOne} justify="center">
-          <Col xs={24} md={16}>
-            <CardLayout
-              cardTitle={"Eventos"}
-              stylesCard={style.cardCarousel}
-            >
+          <Col xs={24}>
+            <CardLayout cardTitle={"Eventos"} className={style.cardCarousel}>
               <Carousel autoplay>
                 {events.map((event) => (
                   <div key={event.id}>
@@ -104,3 +114,7 @@ export const Home = () => {
     </ContentLayout>
   );
 };
+
+
+
+

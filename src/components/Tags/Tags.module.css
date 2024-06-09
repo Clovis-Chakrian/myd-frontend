@@ -1,0 +1,38 @@
+.icon {
+  font-size: 12px;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.tags {
+  width: 150;
+  height: 190;
+  border-radius: 50;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  margin-left: 5px;
+  margin-top: 10px;
+  height: 190;
+}
+
+.number {
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.desafio {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+@media screen and (max-width: 1144px) {
+  .tags {
+    flex-direction: column;
+    margin-top: 10 !important;
+    padding: 0 !important;
+  }
+}
