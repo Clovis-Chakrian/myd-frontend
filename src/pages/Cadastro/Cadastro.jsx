@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import img from "../../../public/icons/imgCadastro.png";
 import logo from "../../../public/icons/logoinitial.png";
 import styles from "./Cadastro.module.css";
-import { Form, Input, DatePicker, Alert, Spin } from "antd";
+import { Form, Input, DatePicker, Alert, Spin, Image, Upload, Flex } from "antd";
 import Button from "../../components/Button/Button";
 import { useNavigate } from "react-router-dom";
 import {
@@ -11,8 +11,12 @@ import {
 } from "@ant-design/icons";
 import ButtonRegister from "../../components/ButtonRegister/Button";
 import { httpClient } from "../../services/httpClient";
+import { UploadPerfilFotoButton } from "./UploadPerfilFotoButton/UploadPerfilFotoButton";
 
 export const Cadastro = () => {
+  const [previewOpen, setPreviewOpen] = useState(false);
+  const [previewImage, setPreviewImage] = useState("");
+  const [fileList, setFileList] = useState([]);
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [isDisabled, setIsDisabled] = useState(true);
@@ -22,7 +26,8 @@ export const Cadastro = () => {
     email: "",
     senha: "",
     senhaConfirma: "",
-    dataNascimento: null
+    dataNascimento: null,
+    fotoPerfil: null
   });
 
   const handleInputChange = (e) => {
@@ -30,10 +35,10 @@ export const Cadastro = () => {
     setFormValues(currentValues => {
       const newFormValues = {
         ...currentValues,
-        [name]: value.trim(),
+        [name]: typeof (value) == 'string' ? value.trim() : value,
       }
 
-      setIsDisabled(!Object.values(newFormValues).every((value) => value.trim() != ""));
+      setIsDisabled(!Object.values(newFormValues).every((value) => value != "" && value != null));
 
       return newFormValues;
     });
@@ -42,21 +47,23 @@ export const Cadastro = () => {
   const handleCadastro = async () => {
     setIsLoading(true);
     try {
-      const usuarioNovoDto = {
-        nome: formValues.nomeCompleto,
-        email: formValues.email,
-        senha: formValues.senha,
-        dataNascimento: formValues.dataNascimento
-      }
-
-      const response = await httpClient.post("/signup", {
-        ...usuarioNovoDto
+      const usuarioNovoDto = new FormData();
+      usuarioNovoDto.append('nome', formValues.nomeCompleto);
+      usuarioNovoDto.append('email', formValues.email);
+      usuarioNovoDto.append('senha', formValues.senha);
+      usuarioNovoDto.append('dataNascimento', new Date(formValues.dataNascimento));
+      usuarioNovoDto.append('fotoPerfil', formValues.fotoPerfil);
+      const response = await httpClient.post("/signup", usuarioNovoDto, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
       });
 
       localStorage.setItem('jwt_token', response.data.dados);
       navigate('/ball');
     } catch (err) {
       setErros([...err.response.data.erros]);
+
     }
     setIsLoading(false);
   }
@@ -66,6 +73,8 @@ export const Cadastro = () => {
 
     if (token) navigate("/home");
   }
+
+  const handleChange = ({ fileList: newFileList }) => setFileList(newFileList);
 
   useEffect(() => {
     handleIsAutenticado();
@@ -103,6 +112,38 @@ export const Cadastro = () => {
               layout="vertical"
             >
               <Form.Item
+                className={styles.imgUpload}
+                label="Foto de Perfil"
+                name={["user", "foto"]}
+                rules={[
+                  { required: true, message: "Por favor, faça o upload de sua foto" },
+                ]}
+              >
+                <Upload
+                  action={file => handleInputChange({ target: { name: "fotoPerfil", value: file } })}
+                  listType="picture-circle"
+                  fileList={fileList}
+                  data={e => console.log(e)}
+                  onChange={handleChange}
+                >
+                  {fileList.length >= 1 ? null : UploadPerfilFotoButton}
+                </Upload>
+                {previewImage && (
+                  <Image
+                    wrapperStyle={{
+                      display: "none",
+                    }}
+                    preview={{
+                      visible: previewOpen,
+                      onVisibleChange: (visible) => setPreviewOpen(visible),
+                      afterOpenChange: (visible) => !visible && setPreviewImage(""),
+                    }}
+                    src={previewImage}
+                  />
+                )}
+              </Form.Item>
+
+              <Form.Item
                 label="Nome Completo"
                 name={["user", "nomeCompleto"]}
                 rules={[
@@ -132,42 +173,6 @@ export const Cadastro = () => {
               >
                 <DatePicker style={{ width: '100%' }} name="dataNascimento" onChange={(e, date) => handleInputChange({ e, target: { name: "dataNascimento", value: date } })} />
               </Form.Item>
-
-              {/* <Form.Item
-              label="País"
-              name={["user", "pais"]}
-              rules={[
-                { required: true, message: "Por favor, informe seu país" },
-              ]}
-            >
-              <Select name="pais" onChange={handleInputChange}>
-                <Select.Option value="Brasil">Brasil</Select.Option>
-              </Select>
-            </Form.Item>
-
-            <Form.Item
-              label="Estado"
-              name={["user", "estado"]}
-              rules={[
-                { required: true, message: "Por favor, seu informe seu Estado" },
-              ]}
-            >
-              <Select name="estado" onChange={handleInputChange}>
-                <Select.Option value="PE">Pernambuco</Select.Option>
-              </Select>
-            </Form.Item>
-
-            <Form.Item
-              label="Cidade"
-              name={["user", "cidade"]}
-              rules={[
-                { required: true, message: "Por favor, seu informe seu Estado" },
-              ]}
-            >
-              <Select name="cidade" onChange={handleInputChange}>
-                <Select.Option value="Recife">Recife</Select.Option>
-              </Select>
-            </Form.Item> */}
 
               <Form.Item
                 label="Senha"
