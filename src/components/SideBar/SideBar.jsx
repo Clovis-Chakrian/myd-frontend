@@ -76,7 +76,7 @@ export const SiderBar = () => (
               style={{ color: "#f2b66d" }}
             />
           ),
-          label: "Configurações",
+          label: "Perfil",
           link: "/config",
         },
       ].map((item, index) => (

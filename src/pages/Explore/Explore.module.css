@@ -1,0 +1,58 @@
+.container {
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.emoji {
+  width: 15vh !important;
+  height: 30vh !important;
+  font-weight: 600;
+}
+
+.card1 {
+  margin-right: 10px !important;
+  width: 300px;
+  height: 300px !important;
+}
+
+.card2 {
+  margin-right: 10px !important;
+  width: 300px;
+  height: 300px !important;
+}
+
+.card3 {
+  margin-right: 10px !important;
+  width: 600px;
+  height: 300px !important;
+}
+
+@media screen and (max-width: 1421px) {
+  .container {
+    align-items: center;
+    text-align: center;
+    justify-content: center !important;
+    display: flex !important;
+    margin-left: 5%;
+  }
+
+  .emoji {
+    width: 9vh !important;
+    height: 16vh !important;
+    font-size: 15px !important;
+    font-weight: 600;
+  }
+
+  .card1 {
+    margin-bottom: 10px !important;
+    width: 300px;
+  }
+
+  .card3 {
+    width: 300px;
+    height: 300px !important;
+  }
+}
