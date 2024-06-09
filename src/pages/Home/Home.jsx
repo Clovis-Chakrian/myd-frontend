@@ -69,10 +69,22 @@ export const Home = () => {
             </CardLayout>
           </Col>
           <Col xs={24} md={12}>
-            <CardLayout cardTitle={"Cronômetro"} className={style.card}>
-              <Row style={{ fontWeight: "bold" }} justify="center">
-                23:59
-              </Row>
+          <CardLayout cardTitle={"Eventos recomendados"} className={style.cardCarousel}>
+              <Carousel autoplay className={style.customCarousel}>
+                {events.map((event) => (
+                  <div key={event.id}>
+                    <img
+                      src={event.img}
+                      alt={event.alt}
+                      className={style.eventImage}
+                    />
+                  </div>
+                  
+                ))}
+              </Carousel>
+              <Link to="/catalogo-eventos">
+                <Button name={"Veja tudo"} className={style.Button} />
+              </Link>            
             </CardLayout>
           </Col>
         </Row>
@@ -96,7 +108,7 @@ export const Home = () => {
           <Col xs={24} md={12}>
             <CardLayout cardTitle={"Espaço zen"} className={style.card}>
               <p>Quanto tempo você precisa relaxar?</p>
-              <h1>--h --min</h1>
+              <h1>00h 30min</h1>
               <Button name={"Vamos começar"} className={style.Button} />
             </CardLayout>
           </Col>
@@ -104,19 +116,7 @@ export const Home = () => {
 
         <Row className={style.rowOne} justify="center">
           <Col xs={24}>
-            <CardLayout cardTitle={"Eventos"} className={style.cardCarousel}>
-              <Carousel autoplay>
-                {events.map((event) => (
-                  <div key={event.id}>
-                    <img
-                      src={event.img}
-                      alt={event.alt}
-                      className={style.eventImage}
-                    />
-                  </div>
-                ))}
-              </Carousel>
-            </CardLayout>
+           
           </Col>
         </Row>
       </div>
