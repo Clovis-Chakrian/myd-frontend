@@ -1,42 +1,56 @@
 import { BarraPesquisaTrilha } from "../../components/BarraPesquisaTrilha/BarraPesquisaTrilha";
 import { TabsTrilha } from "../../components/TabsTrilha/TabsTrilha";
 import styles from "./TrilhaListagem.module.css";
-import InteracaoSocial from "../../../public/TrilhasImg/trilhaInteracaoSocial.png";
-import rotinaSaudavel from "../../../public/TrilhasImg/trilhaRotinaSaudavel.png";
-import praticarGratidao from "../../../public/TrilhasImg/trilhaPraticarGratidao.png";
-import conexaoNatureza from "../../../public/TrilhasImg/trilhaConexaoNatureza.png";
-import trabalhoComunitario from "../../../public/TrilhasImg/trilhaTrabalhoComunitario.png";
-import relaxamento from "../../../public/TrilhasImg/trilhaRelaxamento.png";
+import { useState, useEffect } from "react";
 import { CardListagemTrilhas } from "../../components/CardListagemTrilhas/CardListagemTrilhas";
+import { httpClientJwt } from "../../services/httpClient";
+import { Spin } from "antd";
 
 export const TrilhaListagem = () => {
-  const trilhas = [
-    { titulo: "Relaxamento", imageUrl: relaxamento, trilhaId: 1 },
-    { titulo: "Interação Social", imageUrl: trabalhoComunitario, trilhaId: 2 },
-    { titulo: "Rotina Saúdavel", imageUrl: conexaoNatureza, trilhaId: 3 },
-    { titulo: "Praticar Gratidão", imageUrl: praticarGratidao, trilhaId: 4 },
-    { titulo: "Conexão com a Natureza", imageUrl: rotinaSaudavel, trilhaId: 5 },
-    { titulo: "Trabalho Comunitário", imageUrl: InteracaoSocial, trilhaId: 6 },
-  ];
+  const [trilha, setTrilha] = useState([]);
+  const [erros, setErros] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const fetchTrilhas = async () => {
+    try {
+      const response = await httpClientJwt.get("/trilhas");
+      setTrilha(response.data);
+      setIsLoading(false);
+    } catch (err) {
+      setErros([...err.response.data.erros]);
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchTrilhas();
+  }, []);
 
   return (
-    <div className={styles.center}>
-      <TabsTrilha></TabsTrilha>
-      <hr className={styles.line} />
-
-      <BarraPesquisaTrilha />
-
-      <div className={styles.list}>
-        {trilhas.map((trilha, index) => (
-          <CardListagemTrilhas
-            key={index}
-            index={index}
-            text={trilha.titulo}
-            imageUrl={trilha.imageUrl}
-            trilhaId={trilha.trilhaId}
-          />
-        ))}
+    <Spin spinning={isLoading}>
+      <div className={styles.center}>
+        <TabsTrilha />
+        <hr className={styles.line} />
+        <BarraPesquisaTrilha />
+        <div className={styles.list}>
+          {isLoading ? (
+            <p>Carregando...</p>
+          ) : (
+            trilha.map((trilha, index) => (
+              <CardListagemTrilhas
+                key={index}
+                index={index}
+                text={trilha.nome}
+                imageUrl={trilha.imageUrl}
+                trilhaId={trilha.trilhaId}
+              />
+            ))
+          )}
+          {erros.length > 0 && (
+            <p>Erro ao carregar trilhas: {erros.join(", ")}</p>
+          )}
+        </div>
       </div>
-    </div>
+    </Spin>
   );
 };
