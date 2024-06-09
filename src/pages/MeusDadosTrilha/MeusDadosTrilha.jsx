@@ -5,17 +5,37 @@ import { Flex } from "antd";
 import relaxamento from "../../../public/TrilhasImg/trilhaRelaxamento.png";
 import styles from "./MeusDadosTrilha.module.css"
 import { CardDesafioConcluido } from "./CardDesafioConcluida/CardDesafioConcluido";
+import { useEffect, useState } from "react";
+import { httpClientJwt } from "../../services/httpClient";
 
 export const MeusDadosTrilha = () => {
-  const { trilhaId } = useParams();
   const pontos = "700";
   const diasOfensiva = 12;
+  const { trilhaId } = useParams();
+  const [trilha, setTrilha] = useState({});
+  const [erros, setErros] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const fetchTrilha = async () => {
+    try {
+      const response = await httpClientJwt.get(`/trilhas/${trilhaId}`);
+      setTrilha(response.data);
+      setIsLoading(false);
+    } catch (err) {
+      setErros([...err.response.data.erros]);
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchTrilha();
+  }, [trilhaId]);  
 
   return (
     <div className={styles.detalhes}>
       <CardDetalhesTrilhas
-        text="Lorem Ipsum"
-        imageUrl={relaxamento}
+        text={trilha.nome}
+        imageUrl={trilha.imageUrl}
         trilhaId={trilhaId}
       />
 
@@ -41,7 +61,6 @@ export const MeusDadosTrilha = () => {
         </Flex>
       </Flex>
 
-      {/* <h2>Pra que serve essa trilha? {trilhaId}</h2> */}
       <div className={styles.down}>
         <h3>Minhas Habilidades:</h3>
         <div className={styles.details}>

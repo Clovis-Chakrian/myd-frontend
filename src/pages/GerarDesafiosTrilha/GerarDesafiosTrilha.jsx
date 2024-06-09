@@ -30,7 +30,7 @@ export const GerarDesafiosTrilha = () => {
   }, [trilhaId]);
 
   const navigate = useNavigate();
-  const handleClick = () => navigate(`/gerar-desafios-trilha/${trilhaId}`);
+  const handleClick = () => navigate(`/meus-desafios/${trilhaId}`);
   const [dificuldade, setDificuldade] = useState("Fácil");
 
   return (

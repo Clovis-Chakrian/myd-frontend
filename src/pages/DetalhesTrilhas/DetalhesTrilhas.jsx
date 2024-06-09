@@ -14,7 +14,7 @@ export const DetalhesTrilhas = () => {
   const [erros, setErros] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const fetchTrilhas = async () => {
+  const fetchTrilha = async () => {
     try {
       const response = await httpClientJwt.get(`/trilhas/${trilhaId}`);
       setTrilha(response.data);
@@ -26,20 +26,13 @@ export const DetalhesTrilhas = () => {
   };
 
   useEffect(() => {
-    fetchTrilhas();
+    fetchTrilha();
   }, [trilhaId]);
 
   const navigate = useNavigate();
 
   const handleFollowTrail = async () => {
-    try {
-      const response = await httpClientJwt.post('/usuarios/seguir-trilha', {
-        params: { trilhaId }
-      });
       navigate(`/gerar-desafios-trilha/${trilhaId}`);
-    } catch (err) {
-      setErros([...err.response.data.erros]);
-    }
   };
 
   return (
@@ -47,7 +40,7 @@ export const DetalhesTrilhas = () => {
       <div className={styles.detalhes}>
         <CardDetalhesTrilhas
           text={trilha.nome}
-          imageUrl={trilha.nome}
+          imageUrl={trilha.imageUrl}
           trilhaId={trilhaId}
         />
 
