@@ -2,6 +2,13 @@
   display: flex;
 }
 
+.imgUpload {
+  display: flex;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
 .container {
   flex: 1;
 }

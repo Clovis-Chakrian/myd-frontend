@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import logo from "../../../public/icons/logoinitial.png";
 import styles from "./Trilhas.module.css";
 import { SolidProgress } from "../../components/SolidProgress/SolidProgress";
@@ -18,7 +18,7 @@ export const Trilhas = () => {
   const navigate = useNavigate();
   const [progress, setProgress] = useState(50);
   const [selectedTrilha, setSelectedTrilha] = useState(null);
-  const [trilhas, seTrilhas] = useState([]);
+  const [trilhas, setTrilhas] = useState([]);
   const [erros, setErros] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -35,7 +35,7 @@ export const Trilhas = () => {
     try {
       const response = await httpClientJwt.get("/trilhas");
 
-      seTrilhas(response.data);
+      setTrilhas(response.data);
       setIsLoading(false);
     } catch (err) {
       setErros([...err.response.data.erros]);
@@ -56,7 +56,7 @@ export const Trilhas = () => {
     setIsLoading(true);
     try {
       const response = await httpClientJwt.post("/usuarios/seguir-trilha", {
-        trilha: trilhaId,
+        trilhaId: trilhaId,
       });
       if (response.data.sucesso) {
         navigate("/home");
@@ -64,6 +64,7 @@ export const Trilhas = () => {
         setErros(response.data.erros);
       }
     } catch (err) {
+      console.log(err)
       setErros([...err.response.data.erros]);
     }
   };
