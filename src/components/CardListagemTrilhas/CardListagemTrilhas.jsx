@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import styles from "./CardListagemTrilhas.module.css";
 import { Card } from "antd";
 import { useNavigate } from "react-router-dom";

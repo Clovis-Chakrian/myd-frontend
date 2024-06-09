@@ -40,5 +40,15 @@
 
   .eventImage {
     height: 20vh !important;
+    padding-bottom: 20px;
+  }
+
+  .customCarousel .slick-dots li button {
+    display: none !important;
+  }
+  
+  .buttonContainer {
+    margin-top: 20px;
+    text-align: center;
   }
 }

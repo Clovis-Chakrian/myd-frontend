@@ -16,6 +16,8 @@
 
 .imgCard {
   width: 80%;
+  max-height: 120px;
+  margin-left: 15px;
 }
 
 @media screen and (max-width: 516px) {
