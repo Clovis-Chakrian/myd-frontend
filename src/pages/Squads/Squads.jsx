@@ -1,12 +1,14 @@
 /* eslint-disable react/prop-types */
-import { Card, Row, Col, Checkbox } from "antd";
-import Button from "../../components/Button/Button.jsx";
+import { useEffect, useState } from "react";
+import { Card, Row, Col, Checkbox, Spin, Alert } from "antd";
 import style from "./Squads.module.css";
 import trilhaRelaxamento from "../../../public/icons/trilhaRelaxamento.svg";
 import userImg from "../../../public/icons/userImg.svg";
 import badge1 from "../../../public/icons/badges/badge1.svg";
 import badge2 from "../../../public/icons/badges/badge2.svg";
 import { ContentLayout } from "../../components/ContentLayout/ContentLayout";
+import { httpClientJwt } from "../../services/httpClient";
+import { CardLayout } from "../../components/Card/Card.jsx";
 
 const badges = [
   { image: badge1, description: "100 desafios concluídos" },
@@ -19,41 +21,66 @@ const SquadMemberCard = ({ name, image }) => (
     <h3>{name}</h3>
   </Card>
 );
-
+  
 export const Squads = () => {
+  const [missions, setMissions] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [errors, setErrors] = useState([]);
+
   const squadMembers = [
     { name: "Ana", image: userImg },
-    { name: "Cláudio", image: userImg },
-    { name: "Junior", image: userImg },
+    { name: "João", image: userImg },
+    { name: "Davi", image: userImg },
     { name: "Sofia", image: userImg },
   ];
 
+  useEffect(() => {
+    const fetchMissions = async () => {
+      setIsLoading(true);
+      try {
+        const response = await httpClientJwt.get("/missoes");
+        setMissions(response.data);
+        setIsLoading(false);
+      } catch (err) {
+        setErrors([err.message]);
+        setIsLoading(false);
+      }
+    };
+    fetchMissions();
+  }, []);
+
   return (
     <ContentLayout>
-      <Row className={style.row}>
-        <Col sm={11}>
-          <Card title="Desafios do Squad" className={style.Cards}>
+              <Spin spinning={isLoading}>
+
+      <div className={style.container}>
+      <Row >
+
+        <CardLayout cardTitle={"Missões do Squad"} stylesCard={style.card1}>
             <img
               src={trilhaRelaxamento}
               alt="trilhaRelaxamento"
               className={style.imgTrilha}
             />
-            <p>
-              <Checkbox /> Respire fundo por 10min
-            </p>
-            <p>
-              <Checkbox /> Alongue por 10min
-            </p>
-            <p>
-              <Checkbox /> Fique 45min sem redes sociais
-            </p>
-            <Button name={"Veja tudo"} className={style.Button} />
-          </Card>
-        </Col>
+              <Row justify="center">
+              {errors.length > 0 && (
+                <Alert
+                  message="Erro ao carregar missões"
+                  description={errors.join(", ")}
+                  type="error"
+                  closable
+                  onClose={() => setErrors([])}
+                />
+              )}
+              {missions.map((mission) => (
+                <p key={mission.missaoId}>
+                  <Checkbox>{mission.nome}</Checkbox>
+                </p>
+              ))}
+              </Row>
+            </CardLayout>
 
-        <Col sm={1}></Col>
-        <Col sm={12}>
-          <Card title="Meu Squad" className={style.Cards}>
+            <CardLayout cardTitle={"Meu Squad"} stylesCard={style.card2}>
             <Row gutter={[16, 16]}>
               {squadMembers.map((member, index) => (
                 <Col key={index} xs={24} sm={12} md={8} lg={6}>
@@ -61,10 +88,18 @@ export const Squads = () => {
                 </Col>
               ))}
             </Row>
-
-            <Row justify="center">
-              <Col>
-                <br />
+              <Row justify="center">
+              {errors.length > 0 && (
+                <Alert
+                  message="Erro ao carregar missões"
+                  description={errors.join(", ")}
+                  type="error"
+                  closable
+                  onClose={() => setErrors([])}
+                />
+              )}
+              </Row>
+              <br />
                 <h4>Conquistas: </h4>
 
                 <Row gutter={[16, 16]} justify="center">
@@ -83,11 +118,12 @@ export const Squads = () => {
                     </Col>
                   ))}
                 </Row>
-              </Col>
-            </Row>
-          </Card>
-        </Col>
+            </CardLayout>
       </Row>
+      </div>
+      </Spin>
+
     </ContentLayout>
   );
 };
+
