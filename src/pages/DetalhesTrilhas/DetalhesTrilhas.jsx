@@ -10,7 +10,7 @@ import { Spin } from "antd";
 
 export const DetalhesTrilhas = () => {
   const { trilhaId } = useParams();
-  const [trilha, setTrilha] = useState([]);
+  const [trilha, setTrilha] = useState({});
   const [erros, setErros] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -30,14 +30,24 @@ export const DetalhesTrilhas = () => {
   }, [trilhaId]);
 
   const navigate = useNavigate();
-  const handleClick = () => navigate(`/gerar-desafios-trilha/${trilhaId}`);
+
+  const handleFollowTrail = async () => {
+    try {
+      const response = await httpClientJwt.post('/usuarios/seguir-trilha', {
+        params: { trilhaId }
+      });
+      navigate(`/gerar-desafios-trilha/${trilhaId}`);
+    } catch (err) {
+      setErros([...err.response.data.erros]);
+    }
+  };
 
   return (
     <Spin spinning={isLoading}>
       <div className={styles.detalhes}>
         <CardDetalhesTrilhas
           text={trilha.nome}
-          imageUrl={trilha.imageUrl}
+          imageUrl={trilha.nome}
           trilhaId={trilhaId}
         />
 
@@ -55,7 +65,8 @@ export const DetalhesTrilhas = () => {
             <p className={styles.desafios}>{trilha.desafios?.length}</p>
           </div>
         </div>
-        <Button name={"Quero seguir a Trilha!"} onClick={handleClick} />
+        <Button name={"Quero seguir a Trilha!"} onClick={handleFollowTrail} />
+        {erros.length > 0 && <div className={styles.erros}>Erro: {erros.join(', ')}</div>}
       </div>
     </Spin>
   );

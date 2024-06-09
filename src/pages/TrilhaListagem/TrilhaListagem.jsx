@@ -9,17 +9,17 @@ import { Spin } from "antd";
 export const TrilhaListagem = () => {
   const [trilha, setTrilha] = useState([]);
   const [erros, setErros] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const fetchTrilhas = async () => {
+    setIsLoading(true)
     try {
       const response = await httpClientJwt.get("/trilhas");
       setTrilha(response.data);
-      setIsLoading(false);
     } catch (err) {
       setErros([...err.response.data.erros]);
-      setIsLoading(false);
     }
+    setIsLoading(false);
   };
 
   useEffect(() => {
