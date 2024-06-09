@@ -1,18 +1,68 @@
 .cabecalhoChat {
-  background-color: #84DAFF;
+  background-color: #ffffff;
+  color: #000000 !important;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
+  width: 100%;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+.buttonOpenChatsOpen {
+  border: none !important;
+  color: #f2b66d !important;
+  width: 35px !important;
+  height: 35px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center !important;
+  font-size: 22px;
+  margin-right: -35px;
+  background-color: #ffffff !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.buttonOpenChats {
+  border: none !important;
+  color: #f2b66d;
+  width: 35px !important;
+  height: 35px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center !important;
+  font-size: 22px;
+  background-color: #ffffff !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.colChats {
+  z-index: 999;
+  color: #000;
+  background-color: rgb(255, 255, 255);
+  width: 300px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: -310px;
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(-100%);
+}
+
+.show {
+  transform: translateX(0);
 }
 
 .inputBuscarMensagem {
   max-width: 400px;
   margin-bottom: 12px;
+  width: 90%;
 }
 
 .contatosContainer {
   padding: 0px 8px;
+  overflow-y: auto;
+  height: calc(100% - 60px);
 }
 
 .nomeSquad {
@@ -25,10 +75,29 @@
 }
 
 .mensagensContainer {
-  height: 70vh;
+  height: calc(100vh - 120px);
   overflow-y: scroll;
 }
 
 .mensagemInput {
+  width: 100%;
   max-width: 800px;
+}
+
+@media screen and (max-width: 414px) {
+  .cabecalhoChat {
+    padding: 0 5px;
+  }
+
+  .colChats {
+    width: 80%;
+  }
+
+  .mensagensContainer {
+    height: calc(100vh - 110px);
+  }
+
+  .mensagemInput {
+    width: 100%;
+  }
 }
